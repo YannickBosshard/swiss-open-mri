@@ -369,10 +369,10 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
     </a>
     <div class="nav-links">
       <div class="nav-drop">
-        <button class="nav-drop-toggle">
+        <a href="dienstleistungen.html" class="nav-drop-toggle">
           <span class="de">Dienstleistungen</span><span class="en">Services</span>
           <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
+        </a>
         <div class="drop-menu">
           <a href="mrt.html">MRT — Magnetresonanztomographie</a>
           <a href="ct.html">CT — Computertomographie</a>
@@ -1161,7 +1161,7 @@ document.getElementById('navToggle').addEventListener('click', function() {
 // Mobile dropdown toggles
 document.querySelectorAll('.nav-drop-toggle').forEach(btn => {
   btn.addEventListener('click', function(e) {
-    if(window.innerWidth < 768) {
+    if(window.innerWidth < 768 && btn.tagName === 'BUTTON') {
       e.stopPropagation();
       btn.closest('.nav-drop').classList.toggle('open');
     }

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dienstleistungen | Swiss Open MRI</title>
+<meta name="description" content="Unsere bildgebenden Verfahren: MRT, CT, Ultraschall und Durchleuchtung. Swiss Open MRI, Kanton Schwyz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0F1D58;--navy-mid:#182680;--navy-light:#1E3098;--navy-dark:#090E35;--gold:#C8A96E;--gold-light:#DFC28E;--cream:#F7F4EF;--white:#FFFFFF;--text-s:#4A5568;--text-m:#718096;--border:rgba(15,29,88,0.1);--shadow-md:0 4px 20px rgba(15,29,88,0.1);--shadow-lg:0 12px 48px rgba(15,29,88,0.15);--radius:12px;--ease:cubic-bezier(0.4,0,0.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Montserrat',system-ui,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:300;letter-spacing:-0.01em;line-height:1.2}
+h1{font-size:clamp(2.2rem,4.5vw,3.4rem)}h2{font-size:clamp(1.5rem,2.8vw,2.2rem)}h3{font-size:1.25rem;font-weight:500}
+p{font-size:1rem;line-height:1.75;color:var(--text-s)}
+.label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+[data-lang="de"] .en{display:none}[data-lang="en"] .de{display:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;background:var(--white);border-bottom:1px solid var(--border);transition:.4s var(--ease)}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav.scrolled{box-shadow:0 2px 20px rgba(15,29,88,0.09)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}.nav-logo-img img{height:52px;width:auto;display:block}
+.nav-logo-text span{display:block;font-size:.95rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links>a{color:var(--text-s);text-decoration:none;font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}.nav-links>a:hover{color:var(--navy)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang-toggle{display:flex;align-items:center;gap:2px;background:var(--cream);border:1px solid var(--border);border-radius:100px;padding:3px}
+.lang-btn{background:none;border:none;color:var(--text-m);font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:4px 10px;border-radius:100px;cursor:pointer;font-family:inherit;transition:.2s}.lang-btn.active{background:var(--navy);color:var(--white)}
+.nav-book{background:var(--gold);color:var(--navy);padding:9px 20px;border-radius:100px;font-size:.8rem;font-weight:600;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:.3s var(--ease)}.nav-book:hover{background:var(--gold-light)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--navy);margin:5px 0}
+.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop-toggle{display:flex;align-items:center;gap:5px;color:var(--text-s);font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0;text-decoration:none}
+.nav-drop:hover .nav-drop-toggle,.nav-drop.open .nav-drop-toggle{color:var(--navy)}
+.nav-drop-toggle svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform .2s;flex-shrink:0}
+.nav-drop:hover .nav-drop-toggle svg,.nav-drop.open .nav-drop-toggle svg{transform:rotate(180deg)}
+.drop-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(-6px);background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:8px;min-width:250px;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;pointer-events:none}
+.nav-drop:hover .drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.drop-menu a{display:block;padding:10px 14px;border-radius:8px;color:var(--text-s);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.03em;transition:.15s;white-space:nowrap}
+.drop-menu a:hover,.drop-menu a.active{background:var(--cream);color:var(--navy);font-weight:600}
+
+/* HERO */
+.page-hero{background:var(--navy-dark);padding:140px 24px 90px;position:relative;overflow:hidden}
+.page-hero-rings{position:absolute;inset:0;pointer-events:none}
+.page-hero-inner{position:relative;z-index:2;max-width:1160px;margin:0 auto}
+.page-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.22);color:var(--gold);padding:6px 16px;border-radius:100px;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}
+.page-hero h1{color:var(--white);margin-bottom:14px}.page-hero h1 em{font-style:normal;color:var(--gold)}
+.page-hero-desc{font-size:1.05rem;color:rgba(255,255,255,.55);max-width:600px;line-height:1.75}
+
+/* SERVICE CARDS */
+.services-section{padding:80px 0 100px;background:var(--white)}
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px}
+
+.svc-card{border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:.35s var(--ease);background:var(--white);display:flex;flex-direction:column}
+.svc-card:hover{box-shadow:0 16px 56px rgba(15,29,88,.12);transform:translateY(-4px);border-color:rgba(200,169,110,.35)}
+
+.svc-card-top{background:var(--navy-dark);padding:40px 36px 36px;position:relative;overflow:hidden}
+.svc-card-top-bg{position:absolute;inset:0;pointer-events:none}
+.svc-icon{width:60px;height:60px;border-radius:14px;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc-icon svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.svc-card-top h2{color:var(--white);font-size:1.5rem;font-weight:300;margin-bottom:6px}
+.svc-card-top h2 em{font-style:normal;color:var(--gold)}
+.svc-device{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:0}
+
+.svc-card-body{padding:32px 36px 36px;flex:1;display:flex;flex-direction:column}
+.svc-desc{font-size:.9375rem;line-height:1.75;color:var(--text-s);margin-bottom:24px;flex:1}
+
+.svc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.svc-tag{font-size:.72rem;font-weight:600;letter-spacing:.06em;background:var(--cream);color:var(--navy);padding:5px 12px;border-radius:100px;border:1px solid var(--border)}
+
+.svc-card-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.btn-svc{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:100px;font-size:.85rem;font-weight:600;font-family:inherit;text-decoration:none;cursor:pointer;border:none;transition:.3s var(--ease);letter-spacing:.03em}
+.btn-svc svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.btn-svc:hover svg{transform:translateX(3px)}
+.btn-primary{background:var(--navy);color:var(--white)}.btn-primary:hover{background:var(--navy-mid)}
+.btn-ghost{background:transparent;color:var(--text-s);border:1.5px solid var(--border)}.btn-ghost:hover{border-color:var(--navy);color:var(--navy)}
+
+/* SPECS STRIP */
+.svc-specs{display:flex;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+.svc-spec{display:flex;flex-direction:column;gap:2px}
+.svc-spec-val{font-size:.9375rem;font-weight:600;color:var(--navy)}
+.svc-spec-key{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-m)}
+
+/* FOOTER */
+.footer{background:var(--navy-dark);padding:64px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.footer-brand p{color:rgba(255,255,255,.42);font-size:.8125rem;margin-top:14px;max-width:260px;line-height:1.7}
+.f-col h4{color:rgba(255,255,255,.65);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.f-col a{display:block;color:rgba(255,255,255,.42);font-size:.8125rem;text-decoration:none;margin-bottom:9px;transition:color .2s}.f-col a:hover{color:rgba(255,255,255,.8)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{color:rgba(255,255,255,.28);font-size:.75rem}.footer-bottom-links a{color:rgba(255,255,255,.28);font-size:.75rem;text-decoration:none;margin-left:20px}
+
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(9,14,53,.97);border-top:1px solid rgba(255,255,255,.07);padding:10px 20px;z-index:90;backdrop-filter:blur(20px)}
+.mobile-cta-inner{display:flex;gap:10px}.mobile-cta a{flex:1;text-align:center;justify-content:center}
+.btn-gold-sm{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:100px;font-size:.8125rem;font-weight:600;font-family:inherit;text-decoration:none;background:var(--gold);color:var(--navy);transition:.3s var(--ease)}
+
+@media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-links.mobile-open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;gap:0;box-shadow:0 8px 24px rgba(15,29,88,.08);z-index:99}
+  .nav-links.mobile-open>a{padding:11px 0;border-bottom:1px solid var(--border);font-size:.875rem}.nav-links.mobile-open>a:last-child{border-bottom:none}
+  .nav-drop{width:100%;flex-direction:column;align-items:flex-start}
+  .nav-drop-toggle{padding:11px 0;width:100%;justify-content:space-between;border-bottom:1px solid var(--border);font-size:.875rem}
+  .drop-menu{position:static;transform:none !important;opacity:1;visibility:visible;box-shadow:none;border:none;background:var(--cream);border-radius:8px;padding:6px;margin:4px 0 8px;display:none;pointer-events:auto;min-width:unset;width:100%}
+  .nav-drop.open .drop-menu{display:block}.nav-toggle{display:block}
+  .services-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .mobile-cta{display:block}body{padding-bottom:68px}
+}
+@media(max-width:480px){.svc-card-top,.svc-card-body{padding-left:24px;padding-right:24px}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-img"><img src="bilder/logo/Swiss_Open_MRI_Logo_only.svg" alt="Swiss Open MRI"></div>
+      <div class="nav-logo-text"><span>Swiss Open MRI</span></div>
+    </a>
+    <div class="nav-links">
+      <div class="nav-drop">
+        <a href="dienstleistungen.html" class="nav-drop-toggle" style="color:var(--navy)">
+          <span class="de">Dienstleistungen</span><span class="en">Services</span>
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="drop-menu">
+          <a href="mrt.html">MRT — Magnetresonanztomographie</a>
+          <a href="ct.html">CT — Computertomographie</a>
+          <a href="ultraschall.html">Ultraschall / Sonographie</a>
+          <a href="durchleuchtung.html">Durchleuchtung / Fluoroskopie</a>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <button class="nav-drop-toggle"><span class="de">Fachbereiche</span><span class="en">Specialties</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drop-menu">
+          <a href="muskuloskelettale-radiologie.html">Muskuloskelettale Radiologie</a>
+          <a href="neuroradiologie.html">Neuroradiologie</a>
+          <a href="abdominelle-radiologie.html">Abdominelle Radiologie</a>
+          <a href="thorakale-radiologie.html">Thorakale Radiologie</a>
+          <a href="gefaessdiagnostik.html">Gefässdiagnostik</a>
+        </div>
+      </div>
+      <a href="index.html#patienten"><span class="de">Patienten</span><span class="en">Patients</span></a>
+      <a href="index.html#zuweiser"><span class="de">Zuweiser</span><span class="en">Referrers</span></a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btnDE" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="index.html#termin" class="nav-book de">Termin buchen</a>
+      <a href="index.html#termin" class="nav-book en">Book appointment</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-rings">
+    <svg width="100%" height="100%" viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="1050" cy="220" r="240" fill="none" stroke="rgba(200,169,110,0.05)" stroke-width="1"/>
+      <circle cx="1050" cy="220" r="170" fill="none" stroke="rgba(200,169,110,0.08)" stroke-width="1.5"/>
+      <circle cx="1050" cy="220" r="100" fill="none" stroke="rgba(200,169,110,0.12)" stroke-width="2"/>
+      <circle cx="150" cy="380" r="120" fill="none" stroke="rgba(200,169,110,0.04)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="page-hero-inner">
+    <div class="page-hero-badge">
+      <svg width="10" height="10" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3"/></svg>
+      <span class="de">Swiss Open MRI · Kanton Schwyz</span><span class="en">Swiss Open MRI · Canton Schwyz</span>
+    </div>
+    <h1 class="de">Unsere <em>Dienstleistungen</em></h1>
+    <h1 class="en">Our <em>Services</em></h1>
+    <p class="page-hero-desc de">Vier bildgebende Verfahren unter einem Dach — modernste Geräte, schonende Protokolle, und ein erfahrenes Radiologenteam für präzise Befunde.</p>
+    <p class="page-hero-desc en">Four imaging modalities under one roof — state-of-the-art devices, gentle protocols, and an experienced radiology team for precise reports.</p>
+  </div>
+</section>
+
+<!-- SERVICE CARDS -->
+<section class="services-section">
+  <div class="container">
+    <div class="services-grid">
+
+      <!-- MRT -->
+      <div class="svc-card fade-up">
+        <div class="svc-card-top">
+          <div class="svc-card-top-bg">
+            <svg width="100%" height="100%" viewBox="0 0 480 220" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="400" cy="110" r="130" fill="none" stroke="rgba(200,169,110,0.07)" stroke-width="1.5"/>
+              <circle cx="400" cy="110" r="80" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"/><path d="M9 12h6M12 9v6"/></svg>
+          </div>
+          <h2 class="de"><em>MRT</em> — Magnetresonanztomographie</h2>
+          <h2 class="en"><em>MRI</em> — Magnetic Resonance Imaging</h2>
+          <p class="svc-device">Hitachi OASIS Velocity · 1.2T Open MRI</p>
+        </div>
+        <div class="svc-card-body">
+          <p class="svc-desc de">Das MRT ist die strahlenfreie Methode der Wahl für Weichteile, Gelenke, Rückenmark und Gehirn. Unser offenes System mit 1,2 Tesla bietet höchsten Komfort — ideal für Klaustrophobiepatienten, ältere Menschen und Kinder.</p>
+          <p class="svc-desc en">MRI is the radiation-free method of choice for soft tissues, joints, spinal cord and brain. Our open 1.2T system offers maximum comfort — ideal for claustrophobic patients, elderly people and children.</p>
+          <div class="svc-specs">
+            <div class="svc-spec"><span class="svc-spec-val">1,2 T</span><span class="svc-spec-key de">Feldstärke</span><span class="svc-spec-key en">Field strength</span></div>
+            <div class="svc-spec"><span class="svc-spec-val de">Offen</span><span class="svc-spec-val en">Open</span><span class="svc-spec-key">U-Design</span></div>
+            <div class="svc-spec"><span class="svc-spec-val">20–40 min</span><span class="svc-spec-key de">Dauer</span><span class="svc-spec-key en">Duration</span></div>
+            <div class="svc-spec"><span class="svc-spec-val de">Keine</span><span class="svc-spec-val en">None</span><span class="svc-spec-key de">Strahlung</span><span class="svc-spec-key en">Radiation</span></div>
+          </div>
+          <div class="svc-tags">
+            <span class="svc-tag de">Gelenke & Wirbelsäule</span><span class="svc-tag en">Joints & spine</span>
+            <span class="svc-tag de">Gehirn & Rückenmark</span><span class="svc-tag en">Brain & spinal cord</span>
+            <span class="svc-tag de">Abdomen & Becken</span><span class="svc-tag en">Abdomen & pelvis</span>
+            <span class="svc-tag">MR-Angiographie</span>
+          </div>
+          <div class="svc-card-footer">
+            <a href="mrt.html" class="btn-svc btn-primary">
+              <span class="de">Mehr erfahren</span><span class="en">Learn more</span>
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="index.html#termin" class="btn-svc btn-ghost">
+              <span class="de">Termin buchen</span><span class="en">Book</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CT -->
+      <div class="svc-card fade-up d1">
+        <div class="svc-card-top">
+          <div class="svc-card-top-bg">
+            <svg width="100%" height="100%" viewBox="0 0 480 220" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="400" cy="110" r="130" fill="none" stroke="rgba(200,169,110,0.07)" stroke-width="1.5"/>
+              <circle cx="400" cy="110" r="80" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="3" y1="12" x2="7" y2="12"/><line x1="17" y1="12" x2="21" y2="12"/></svg>
+          </div>
+          <h2 class="de"><em>CT</em> — Computertomographie</h2>
+          <h2 class="en"><em>CT</em> — Computed Tomography</h2>
+          <p class="svc-device">FCT-iStream FE · Low-Dose-Technologie</p>
+        </div>
+        <div class="svc-card-body">
+          <p class="svc-desc de">Die CT liefert in Sekunden hochauflösende 3D-Bilder des gesamten Körpers — unschlagbar für Notfälle, Lungendiagnostik und onkologisches Staging. Mit modernster Low-Dose-Technologie minimieren wir die Strahlenbelastung.</p>
+          <p class="svc-desc en">CT delivers high-resolution 3D images of the entire body in seconds — unbeatable for emergencies, pulmonary diagnostics and oncological staging. With state-of-the-art low-dose technology we minimise radiation exposure.</p>
+          <div class="svc-specs">
+            <div class="svc-spec"><span class="svc-spec-val">&lt;10 s</span><span class="svc-spec-key de">Scan-Dauer</span><span class="svc-spec-key en">Scan time</span></div>
+            <div class="svc-spec"><span class="svc-spec-val">0.5 mm</span><span class="svc-spec-key de">Schichtdicke</span><span class="svc-spec-key en">Slice thickness</span></div>
+            <div class="svc-spec"><span class="svc-spec-val">15–30 min</span><span class="svc-spec-key de">Dauer</span><span class="svc-spec-key en">Duration</span></div>
+            <div class="svc-spec"><span class="svc-spec-val">Low Dose</span><span class="svc-spec-key de">Protokoll</span><span class="svc-spec-key en">Protocol</span></div>
+          </div>
+          <div class="svc-tags">
+            <span class="svc-tag de">Thorax & Lunge</span><span class="svc-tag en">Thorax & lungs</span>
+            <span class="svc-tag de">Onkologisches Staging</span><span class="svc-tag en">Oncological staging</span>
+            <span class="svc-tag">CT-Angiographie</span>
+            <span class="svc-tag de">Trauma & Notfall</span><span class="svc-tag en">Trauma & emergency</span>
+          </div>
+          <div class="svc-card-footer">
+            <a href="ct.html" class="btn-svc btn-primary">
+              <span class="de">Mehr erfahren</span><span class="en">Learn more</span>
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="index.html#termin" class="btn-svc btn-ghost">
+              <span class="de">Termin buchen</span><span class="en">Book</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ULTRASCHALL -->
+      <div class="svc-card fade-up d2">
+        <div class="svc-card-top">
+          <div class="svc-card-top-bg">
+            <svg width="100%" height="100%" viewBox="0 0 480 220" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="400" cy="110" r="130" fill="none" stroke="rgba(200,169,110,0.07)" stroke-width="1.5"/>
+              <circle cx="400" cy="110" r="80" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h2 class="de"><em>Ultraschall</em> / Sonographie</h2>
+          <h2 class="en"><em>Ultrasound</em> / Sonography</h2>
+          <p class="svc-device">Samsung V8 ONE · HD Ultraschall</p>
+        </div>
+        <div class="svc-card-body">
+          <p class="svc-desc de">Vollkommen strahlungsfrei, in Echtzeit und ohne Vorbereitung einsetzbar. Der Ultraschall ist die erste Wahl für Bauchorgane, Gefässe, Schilddrüse und Weichteile — sowie für dynamische Untersuchungen von Sehnen und Muskeln.</p>
+          <p class="svc-desc en">Completely radiation-free, usable in real time and without preparation. Ultrasound is the first choice for abdominal organs, vessels, thyroid and soft tissues — as well as for dynamic examinations of tendons and muscles.</p>
+          <div class="svc-specs">
+            <div class="svc-spec"><span class="svc-spec-val de">Keine</span><span class="svc-spec-val en">None</span><span class="svc-spec-key de">Strahlung</span><span class="svc-spec-key en">Radiation</span></div>
+            <div class="svc-spec"><span class="svc-spec-val">HD</span><span class="svc-spec-key de">Bildqualität</span><span class="svc-spec-key en">Image quality</span></div>
+            <div class="svc-spec"><span class="svc-spec-val">10–20 min</span><span class="svc-spec-key de">Dauer</span><span class="svc-spec-key en">Duration</span></div>
+            <div class="svc-spec"><span class="svc-spec-val de">Echtzeit</span><span class="svc-spec-val en">Real-time</span><span class="svc-spec-key de">Bildgebung</span><span class="svc-spec-key en">Imaging</span></div>
+          </div>
+          <div class="svc-tags">
+            <span class="svc-tag de">Bauchorgane</span><span class="svc-tag en">Abdominal organs</span>
+            <span class="svc-tag de">Gefässe & Doppler</span><span class="svc-tag en">Vessels & Doppler</span>
+            <span class="svc-tag de">Schilddrüse</span><span class="svc-tag en">Thyroid</span>
+            <span class="svc-tag de">Sehnen & Muskeln</span><span class="svc-tag en">Tendons & muscles</span>
+          </div>
+          <div class="svc-card-footer">
+            <a href="ultraschall.html" class="btn-svc btn-primary">
+              <span class="de">Mehr erfahren</span><span class="en">Learn more</span>
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="index.html#termin" class="btn-svc btn-ghost">
+              <span class="de">Termin buchen</span><span class="en">Book</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DURCHLEUCHTUNG -->
+      <div class="svc-card fade-up d3">
+        <div class="svc-card-top">
+          <div class="svc-card-top-bg">
+            <svg width="100%" height="100%" viewBox="0 0 480 220" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="400" cy="110" r="130" fill="none" stroke="rgba(200,169,110,0.07)" stroke-width="1.5"/>
+              <circle cx="400" cy="110" r="80" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h2 class="de"><em>Durchleuchtung</em> / Fluoroskopie</h2>
+          <h2 class="en"><em>Fluoroscopy</em></h2>
+          <p class="svc-device">FDX Visionary CS lite · Digital Flat-Panel</p>
+        </div>
+        <div class="svc-card-body">
+          <p class="svc-desc de">Echtzeit-Röntgenbildgebung für dynamische Untersuchungen des Magen-Darm-Trakts, Schluckakte und bildgestützte Gelenkinjektionen. Digitale Flat-Panel-Technologie für klare Bilder bei minimaler Dosis.</p>
+          <p class="svc-desc en">Real-time X-ray imaging for dynamic examinations of the gastrointestinal tract, swallowing studies and image-guided joint injections. Digital flat-panel technology for clear images at minimal dose.</p>
+          <div class="svc-specs">
+            <div class="svc-spec"><span class="svc-spec-val de">Echtzeit</span><span class="svc-spec-val en">Real-time</span><span class="svc-spec-key de">Live-Bildgebung</span><span class="svc-spec-key en">Live imaging</span></div>
+            <div class="svc-spec"><span class="svc-spec-val">Digital</span><span class="svc-spec-key">Flat-Panel</span></div>
+            <div class="svc-spec"><span class="svc-spec-val">15–30 min</span><span class="svc-spec-key de">Dauer</span><span class="svc-spec-key en">Duration</span></div>
+            <div class="svc-spec"><span class="svc-spec-val">Low Dose</span><span class="svc-spec-key de">Protokoll</span><span class="svc-spec-key en">Protocol</span></div>
+          </div>
+          <div class="svc-tags">
+            <span class="svc-tag de">Magen-Darm-Trakt</span><span class="svc-tag en">Gastrointestinal</span>
+            <span class="svc-tag de">Schluckakt</span><span class="svc-tag en">Swallowing study</span>
+            <span class="svc-tag de">Gelenkinfiltrationen</span><span class="svc-tag en">Joint injections</span>
+            <span class="svc-tag">Arthrographie</span>
+          </div>
+          <div class="svc-card-footer">
+            <a href="durchleuchtung.html" class="btn-svc btn-primary">
+              <span class="de">Mehr erfahren</span><span class="en">Learn more</span>
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="index.html#termin" class="btn-svc btn-ghost">
+              <span class="de">Termin buchen</span><span class="en">Book</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;text-decoration:none"><img src="bilder/logo/Swiss_Open_MRI_Logo_only.svg" alt="Swiss Open MRI" style="height:56px;width:auto;filter:brightness(0) invert(1)"></a>
+        <p class="de">Das führende Open MRI Zentrum in der Zentralschweiz. Eröffnung 2026.</p>
+        <p class="en">The leading Open MRI centre in Central Switzerland. Opening 2026.</p>
+      </div>
+      <div class="f-col">
+        <h4 class="de">Dienstleistungen</h4><h4 class="en">Services</h4>
+        <a href="mrt.html">MRT</a><a href="ct.html">CT</a>
+        <a href="ultraschall.html" class="de">Ultraschall</a><a href="ultraschall.html" class="en">Ultrasound</a>
+        <a href="durchleuchtung.html" class="de">Durchleuchtung</a><a href="durchleuchtung.html" class="en">Fluoroscopy</a>
+      </div>
+      <div class="f-col">
+        <h4 class="de">Fachbereiche</h4><h4 class="en">Specialties</h4>
+        <a href="muskuloskelettale-radiologie.html" class="de">Muskuloskelettale Radiologie</a><a href="muskuloskelettale-radiologie.html" class="en">MSK Radiology</a>
+        <a href="neuroradiologie.html">Neuroradiologie</a>
+        <a href="abdominelle-radiologie.html" class="de">Abdominelle Radiologie</a><a href="abdominelle-radiologie.html" class="en">Abdominal Radiology</a>
+        <a href="thorakale-radiologie.html" class="de">Thorakale Radiologie</a><a href="thorakale-radiologie.html" class="en">Thoracic Radiology</a>
+        <a href="gefaessdiagnostik.html" class="de">Gefässdiagnostik</a><a href="gefaessdiagnostik.html" class="en">Vascular Imaging</a>
+      </div>
+      <div class="f-col">
+        <h4 class="de">Kontakt</h4><h4 class="en">Contact</h4>
+        <a href="tel:+41418801010">+41 XX XXX XX XX</a>
+        <a href="mailto:info@swiss-open-mri.ch">info@swiss-open-mri.ch</a>
+        <a>Kanton Schwyz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Swiss Open MRI. <span class="de">Alle Rechte vorbehalten.</span><span class="en">All rights reserved.</span></p>
+      <div class="footer-bottom-links">
+        <a href="#" class="de">Impressum</a><a href="#" class="en">Legal</a>
+        <a href="#" class="de">Datenschutz</a><a href="#" class="en">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta"><div class="mobile-cta-inner">
+  <a href="index.html#termin" class="btn-gold-sm">
+    <span class="de">Termin buchen</span><span class="en">Book appointment</span>
+  </a>
+</div></div>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.06,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+function setLang(lang){document.documentElement.setAttribute('data-lang',lang);document.documentElement.lang=lang;document.getElementById('btnDE').classList.toggle('active',lang==='de');document.getElementById('btnEN').classList.toggle('active',lang==='en')}
+document.getElementById('navToggle').addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('mobile-open'));
+document.querySelectorAll('.nav-drop-toggle').forEach(btn=>btn.addEventListener('click',e=>{if(window.innerWidth<768&&btn.tagName==='BUTTON'){e.stopPropagation();btn.closest('.nav-drop').classList.toggle('open')}}));
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-inner'))document.querySelector('.nav-links').classList.remove('mobile-open')});
+</script>
+</body>
+</html>

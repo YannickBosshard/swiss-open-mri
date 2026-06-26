@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de" data-lang="de">
 <head>
 <meta charset="UTF-8">
@@ -119,7 +119,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
     </a>
     <div class="nav-links">
       <div class="nav-drop">
-        <button class="nav-drop-toggle"><span class="de">Dienstleistungen</span><span class="en">Services</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <a href="dienstleistungen.html" class="nav-drop-toggle"><span class="de">Dienstleistungen</span><span class="en">Services</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a>
         <div class="drop-menu">
           <a href="mrt.html">MRT — Magnetresonanztomographie</a>
           <a href="ct.html" class="active">CT — Computertomographie</a>
@@ -402,7 +402,7 @@ const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersect
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 function setLang(lang){document.documentElement.setAttribute('data-lang',lang);document.documentElement.lang=lang;document.getElementById('btnDE').classList.toggle('active',lang==='de');document.getElementById('btnEN').classList.toggle('active',lang==='en')}
 document.getElementById('navToggle').addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('mobile-open'));
-document.querySelectorAll('.nav-drop-toggle').forEach(btn=>btn.addEventListener('click',e=>{if(window.innerWidth<768){e.stopPropagation();btn.closest('.nav-drop').classList.toggle('open')}}));
+document.querySelectorAll('.nav-drop-toggle').forEach(btn=>btn.addEventListener('click',e=>{if(window.innerWidth<768&&btn.tagName==='BUTTON'){e.stopPropagation();btn.closest('.nav-drop').classList.toggle('open')}}));
 document.addEventListener('click',e=>{if(!e.target.closest('.nav-inner'))document.querySelector('.nav-links').classList.remove('mobile-open')});
 document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open')}));
 </script>
