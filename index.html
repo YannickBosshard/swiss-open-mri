@@ -98,6 +98,18 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
 .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--navy);margin:5px 0;transition:.3s var(--ease)}
 
+/* NAV DROPDOWNS */
+.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop-toggle{display:flex;align-items:center;gap:5px;color:var(--text-s);font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0}
+.nav-drop:hover .nav-drop-toggle,.nav-drop.open .nav-drop-toggle{color:var(--navy)}
+.nav-drop-toggle svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform .2s;flex-shrink:0}
+.nav-drop:hover .nav-drop-toggle svg,.nav-drop.open .nav-drop-toggle svg{transform:rotate(180deg)}
+.drop-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(-6px);background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:8px;min-width:250px;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;pointer-events:none}
+.nav-drop:hover .drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.drop-menu a{display:block;padding:10px 14px;border-radius:8px;color:var(--text-s);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.03em;transition:.15s;white-space:nowrap}
+.drop-menu a:hover{background:var(--cream);color:var(--navy)}
+.drop-menu a.active{color:var(--navy);font-weight:600}
+
 /* HERO */
 .hero{background:var(--navy-dark);min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:120px 24px 80px}
 .hero-rings{position:absolute;inset:0;pointer-events:none}
@@ -311,7 +323,14 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
 }
 @media(max-width:768px){
   .section{padding:72px 0}
-  .nav-links,.nav-phone{display:none}
+  .nav-links{display:none}
+  .nav-links.mobile-open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;gap:0;box-shadow:0 8px 24px rgba(15,29,88,0.08);z-index:99}
+  .nav-links.mobile-open>a{padding:11px 0;border-bottom:1px solid var(--border);font-size:.875rem}
+  .nav-links.mobile-open>a:last-child{border-bottom:none}
+  .nav-drop{width:100%;flex-direction:column;align-items:flex-start}
+  .nav-drop-toggle{padding:11px 0;width:100%;justify-content:space-between;border-bottom:1px solid var(--border);font-size:.875rem}
+  .drop-menu{position:static;transform:none !important;opacity:1;visibility:visible;box-shadow:none;border:none;background:var(--cream);border-radius:8px;padding:6px;margin:4px 0 8px;display:none;pointer-events:auto;min-width:unset;width:100%}
+  .nav-drop.open .drop-menu{display:block}
   .nav-toggle{display:block}
   .adv-grid{grid-template-columns:1fr}
   .j-steps{grid-template-columns:1fr 1fr}
@@ -349,17 +368,37 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
       </div>
     </a>
     <div class="nav-links">
-<a href="#untersuchungen"><span class="de">Leistungen</span><span class="en">Services</span></a>
+      <div class="nav-drop">
+        <button class="nav-drop-toggle">
+          <span class="de">Dienstleistungen</span><span class="en">Services</span>
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="drop-menu">
+          <a href="mrt.html">MRT — Magnetresonanztomographie</a>
+          <a href="ct.html">CT — Computertomographie</a>
+          <a href="ultraschall.html">Ultraschall / Sonographie</a>
+          <a href="durchleuchtung.html">Durchleuchtung / Fluoroskopie</a>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <button class="nav-drop-toggle">
+          <span class="de">Fachbereiche</span><span class="en">Specialties</span>
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="drop-menu">
+          <a href="muskuloskelettale-radiologie.html">Muskuloskelettale Radiologie</a>
+          <a href="neuroradiologie.html">Neuroradiologie</a>
+          <a href="abdominelle-radiologie.html">Abdominelle Radiologie</a>
+          <a href="thorakale-radiologie.html">Thorakale Radiologie</a>
+          <a href="gefaessdiagnostik.html">Gefässdiagnostik</a>
+        </div>
+      </div>
       <a href="#patienten"><span class="de">Patienten</span><span class="en">Patients</span></a>
       <a href="#zuweiser"><span class="de">Zuweiser</span><span class="en">Referrers</span></a>
       <a href="#faq">FAQ</a>
       <a href="#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a>
     </div>
     <div class="nav-right">
-      <a href="tel:+41418801010" class="nav-phone">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.4 1.13 2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        +41 XX XXX XX XX
-      </a>
       <div class="lang-toggle">
         <button class="lang-btn active" id="btnDE" onclick="setLang('de')">DE</button>
         <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
@@ -1117,9 +1156,22 @@ function setLang(lang) {
 
 // Mobile nav
 document.getElementById('navToggle').addEventListener('click', function() {
-  const links = document.querySelector('.nav-links');
-  const open = links.style.display === 'flex';
-  links.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:20px 24px;gap:18px;box-shadow:0 8px 24px rgba(15,29,88,0.08)';
+  document.querySelector('.nav-links').classList.toggle('mobile-open');
+});
+// Mobile dropdown toggles
+document.querySelectorAll('.nav-drop-toggle').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    if(window.innerWidth < 768) {
+      e.stopPropagation();
+      btn.closest('.nav-drop').classList.toggle('open');
+    }
+  });
+});
+// Close mobile nav on outside click
+document.addEventListener('click', function(e) {
+  if(!e.target.closest('.nav-inner')) {
+    document.querySelector('.nav-links').classList.remove('mobile-open');
+  }
 });
 
 // Smooth scroll with nav offset

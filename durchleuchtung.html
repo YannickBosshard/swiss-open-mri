@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durchleuchtung / Fluoroskopie | Swiss Open MRI</title>
+<meta name="description" content="Digitale Durchleuchtung mit dem FDX Visionary CS lite — Echtzeit-Röntgenbildgebung, dosisoptimiert. Swiss Open MRI, Kanton Schwyz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0F1D58;--navy-mid:#182680;--navy-light:#1E3098;--navy-dark:#090E35;--gold:#C8A96E;--gold-light:#DFC28E;--cream:#F7F4EF;--white:#FFFFFF;--text-s:#4A5568;--text-m:#718096;--border:rgba(15,29,88,0.1);--shadow-md:0 4px 20px rgba(15,29,88,0.1);--shadow-lg:0 12px 48px rgba(15,29,88,0.15);--radius:12px;--radius-lg:20px;--ease:cubic-bezier(0.4,0,0.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Montserrat',system-ui,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-weight:300;letter-spacing:-0.01em;line-height:1.2}
+h1{font-size:clamp(2.2rem,4.5vw,3.4rem)}h2{font-size:clamp(1.6rem,3vw,2.4rem)}h3{font-size:1.125rem;font-weight:400}
+p{font-size:1rem;line-height:1.75;color:var(--text-s)}
+.label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}.section{padding:96px 0}
+.section-header{text-align:center;margin-bottom:60px}.section-header h2{margin-bottom:14px}.section-header p{max-width:560px;margin:0 auto}
+[data-lang="de"] .en{display:none}[data-lang="en"] .de{display:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:100px;font-size:.9rem;font-weight:500;font-family:inherit;text-decoration:none;cursor:pointer;border:none;transition:.3s var(--ease);white-space:nowrap;letter-spacing:.02em}
+.btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-outline-w{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.45)}.btn-outline-w:hover{border-color:var(--white);background:rgba(255,255,255,.07)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;background:var(--white);border-bottom:1px solid var(--border);transition:.4s var(--ease)}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav.scrolled{box-shadow:0 2px 20px rgba(15,29,88,0.09)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}.nav-logo-img img{height:52px;width:auto;display:block}
+.nav-logo-text span{display:block;font-size:.95rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links>a{color:var(--text-s);text-decoration:none;font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}.nav-links>a:hover{color:var(--navy)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang-toggle{display:flex;align-items:center;gap:2px;background:var(--cream);border:1px solid var(--border);border-radius:100px;padding:3px}
+.lang-btn{background:none;border:none;color:var(--text-m);font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:4px 10px;border-radius:100px;cursor:pointer;font-family:inherit;transition:.2s}.lang-btn.active{background:var(--navy);color:var(--white)}
+.nav-book{background:var(--gold);color:var(--navy);padding:9px 20px;border-radius:100px;font-size:.8rem;font-weight:600;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:.3s var(--ease)}.nav-book:hover{background:var(--gold-light)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--navy);margin:5px 0}
+.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop-toggle{display:flex;align-items:center;gap:5px;color:var(--text-s);font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0}
+.nav-drop:hover .nav-drop-toggle{color:var(--navy)}.nav-drop-toggle svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform .2s;flex-shrink:0}
+.nav-drop:hover .nav-drop-toggle svg{transform:rotate(180deg)}
+.drop-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(-6px);background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:8px;min-width:250px;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;pointer-events:none}
+.nav-drop:hover .drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.drop-menu a{display:block;padding:10px 14px;border-radius:8px;color:var(--text-s);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.03em;transition:.15s;white-space:nowrap}
+.drop-menu a:hover,.drop-menu a.active{background:var(--cream);color:var(--navy);font-weight:600}
+.page-hero{background:var(--navy-dark);padding:140px 24px 90px;position:relative;overflow:hidden}
+.page-hero-rings{position:absolute;inset:0;pointer-events:none}
+.page-hero-inner{position:relative;z-index:2;max-width:1160px;margin:0 auto}
+.page-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.22);color:var(--gold);padding:6px 16px;border-radius:100px;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}
+.page-hero h1{color:var(--white);margin-bottom:14px;max-width:820px}.page-hero h1 em{font-style:normal;color:var(--gold)}
+.page-hero-desc{font-size:1.05rem;color:rgba(255,255,255,.55);margin-bottom:36px;max-width:600px;line-height:1.75}
+.page-hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.device-section{background:var(--cream);padding:80px 0}
+.device-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.device-visual{background:var(--navy);border-radius:var(--radius-lg);padding:48px;display:flex;align-items:center;justify-content:center;min-height:340px;position:relative;overflow:hidden}
+.device-visual-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(200,169,110,.07) 0%,transparent 70%)}
+.device-badge{display:inline-flex;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.2);color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.device-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
+.spec-item{background:var(--white);border-radius:var(--radius);padding:18px;text-align:center;border:1px solid var(--border)}
+.spec-v{font-size:1.35rem;font-weight:600;color:var(--navy);letter-spacing:-.02em}.spec-l{font-size:.72rem;color:var(--text-m);margin-top:3px}
+.device-features{display:flex;flex-direction:column;gap:22px;margin-top:28px}
+.df{display:flex;gap:14px;align-items:flex-start}
+.df-icon{width:34px;height:34px;border-radius:8px;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.df-icon svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.75}
+.df h4{font-size:.9375rem;font-weight:500;margin-bottom:3px}.df p{font-size:.875rem;margin:0}
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ind-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;transition:.3s var(--ease)}
+.ind-card:hover{box-shadow:var(--shadow-md);border-color:rgba(200,169,110,.3);transform:translateY(-2px)}
+.ind-icon{width:40px;height:40px;border-radius:8px;background:var(--cream);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.ind-icon svg{width:18px;height:18px;stroke:var(--navy);fill:none;stroke-width:1.5}
+.ind-card h3{font-size:.9375rem;font-weight:500;margin-bottom:6px}.ind-card p{font-size:.8125rem;margin:0;line-height:1.6}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--white)}
+.faq-q{width:100%;background:none;border:none;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;font-family:inherit;font-size:.9375rem;font-weight:500;color:var(--navy);text-align:left;transition:.2s}
+.faq-q:hover{background:var(--cream)}.faq-q svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:2;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-q svg{transform:rotate(45deg)}.faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}.faq-item.open .faq-a{max-height:400px}
+.faq-a-inner{padding:0 24px 22px;font-size:.9rem;color:var(--text-s);line-height:1.75}
+.cta-section{background:var(--navy);padding:100px 24px;text-align:center;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(200,169,110,.04) 0%,transparent 60%);pointer-events:none}
+.cta-section h2{color:var(--white);margin-bottom:14px;position:relative;z-index:1}
+.cta-section>p{color:rgba(255,255,255,.55);max-width:480px;margin:0 auto 36px;position:relative;z-index:1}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.footer{background:var(--navy-dark);padding:64px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.footer-brand p{color:rgba(255,255,255,.42);font-size:.8125rem;margin-top:14px;max-width:260px;line-height:1.7}
+.f-col h4{color:rgba(255,255,255,.65);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.f-col a{display:block;color:rgba(255,255,255,.42);font-size:.8125rem;text-decoration:none;margin-bottom:9px;transition:color .2s}.f-col a:hover{color:rgba(255,255,255,.8)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{color:rgba(255,255,255,.28);font-size:.75rem}.footer-bottom-links a{color:rgba(255,255,255,.28);font-size:.75rem;text-decoration:none;margin-left:20px}
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(9,14,53,.97);border-top:1px solid rgba(255,255,255,.07);padding:10px 20px;z-index:90;backdrop-filter:blur(20px)}
+.mobile-cta-inner{display:flex;gap:10px}.mobile-cta a{flex:1;text-align:center;justify-content:center}
+@media(max-width:1024px){.device-grid{grid-template-columns:1fr;gap:48px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+  .section{padding:72px 0}.nav-links{display:none}
+  .nav-links.mobile-open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;gap:0;box-shadow:0 8px 24px rgba(15,29,88,.08);z-index:99}
+  .nav-links.mobile-open>a{padding:11px 0;border-bottom:1px solid var(--border);font-size:.875rem}.nav-links.mobile-open>a:last-child{border-bottom:none}
+  .nav-drop{width:100%;flex-direction:column;align-items:flex-start}
+  .nav-drop-toggle{padding:11px 0;width:100%;justify-content:space-between;border-bottom:1px solid var(--border);font-size:.875rem}
+  .drop-menu{position:static;transform:none !important;opacity:1;visibility:visible;box-shadow:none;border:none;background:var(--cream);border-radius:8px;padding:6px;margin:4px 0 8px;display:none;pointer-events:auto;min-width:unset;width:100%}
+  .nav-drop.open .drop-menu{display:block}.nav-toggle{display:block}
+  .ind-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr;gap:28px}.mobile-cta{display:block}body{padding-bottom:68px}
+}
+@media(max-width:480px){.ind-grid{grid-template-columns:1fr}.page-hero-actions{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-img"><img src="bilder/logo/Swiss_Open_MRI_Logo_only.svg" alt="Swiss Open MRI"></div>
+      <div class="nav-logo-text"><span>Swiss Open MRI</span></div>
+    </a>
+    <div class="nav-links">
+      <div class="nav-drop">
+        <button class="nav-drop-toggle"><span class="de">Dienstleistungen</span><span class="en">Services</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drop-menu">
+          <a href="mrt.html">MRT — Magnetresonanztomographie</a>
+          <a href="ct.html">CT — Computertomographie</a>
+          <a href="ultraschall.html">Ultraschall / Sonographie</a>
+          <a href="durchleuchtung.html" class="active">Durchleuchtung / Fluoroskopie</a>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <button class="nav-drop-toggle"><span class="de">Fachbereiche</span><span class="en">Specialties</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drop-menu">
+          <a href="muskuloskelettale-radiologie.html">Muskuloskelettale Radiologie</a>
+          <a href="neuroradiologie.html">Neuroradiologie</a>
+          <a href="abdominelle-radiologie.html">Abdominelle Radiologie</a>
+          <a href="thorakale-radiologie.html">Thorakale Radiologie</a>
+          <a href="gefaessdiagnostik.html">Gefässdiagnostik</a>
+        </div>
+      </div>
+      <a href="index.html#patienten"><span class="de">Patienten</span><span class="en">Patients</span></a>
+      <a href="index.html#zuweiser"><span class="de">Zuweiser</span><span class="en">Referrers</span></a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btnDE" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="index.html#termin" class="nav-book de">Termin buchen</a>
+      <a href="index.html#termin" class="nav-book en">Book appointment</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-rings">
+    <svg width="100%" height="100%" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="1000" cy="250" r="220" fill="none" stroke="rgba(200,169,110,0.06)" stroke-width="1"/>
+      <circle cx="1000" cy="250" r="160" fill="none" stroke="rgba(200,169,110,0.09)" stroke-width="1.5"/>
+      <circle cx="1000" cy="250" r="100" fill="none" stroke="rgba(200,169,110,0.14)" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="page-hero-inner">
+    <div class="page-hero-badge">
+      <svg width="10" height="10" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>
+      <span class="de">Dienstleistungen · Swiss Open MRI</span><span class="en">Services · Swiss Open MRI</span>
+    </div>
+    <h1 class="de"><em>Durchleuchtung</em> / Fluoroskopie</h1>
+    <h1 class="en"><em>Fluoroscopy</em> / Real-Time X-Ray</h1>
+    <p class="page-hero-desc de">Digitale Echtzeit-Röntgenbildgebung mit dem FDX Visionary CS lite — dosisoptimiert, hochauflösend und ideal für dynamische Untersuchungen von Verdauungstrakt, Gelenken und mehr.</p>
+    <p class="page-hero-desc en">Digital real-time X-ray imaging with the FDX Visionary CS lite — dose-optimised, high-resolution and ideal for dynamic examinations of the digestive tract, joints and more.</p>
+    <div class="page-hero-actions">
+      <a href="index.html#termin" class="btn btn-gold">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="de">Termin vereinbaren</span><span class="en">Book appointment</span>
+      </a>
+      <a href="index.html#kontakt" class="btn btn-outline-w">
+        <span class="de">Fragen? Kontakt aufnehmen</span><span class="en">Questions? Get in touch</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="device-section">
+  <div class="container">
+    <div class="device-grid">
+      <div class="fade-up">
+        <div class="device-visual">
+          <div class="device-visual-bg"></div>
+          <svg width="100%" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;max-width:280px">
+            <!-- Fluoroscopy C-arm -->
+            <path d="M80 200 Q60 120 100 60 Q140 20 180 60 Q220 100 220 180" fill="none" stroke="rgba(200,169,110,0.3)" stroke-width="18" stroke-linecap="round"/>
+            <path d="M80 200 Q60 120 100 60 Q140 20 180 60 Q220 100 220 180" fill="none" stroke="rgba(9,14,53,0.8)" stroke-width="14" stroke-linecap="round"/>
+            <!-- X-ray source (top) -->
+            <circle cx="100" cy="60" r="18" fill="rgba(200,169,110,0.15)" stroke="rgba(200,169,110,0.45)" stroke-width="2"/>
+            <line x1="100" y1="60" x2="200" y2="185" stroke="rgba(200,169,110,0.08)" stroke-width="1" stroke-dasharray="6,4"/>
+            <!-- Detector (bottom) -->
+            <rect x="185" y="168" width="50" height="34" rx="6" fill="rgba(200,169,110,0.12)" stroke="rgba(200,169,110,0.35)" stroke-width="1.5"/>
+            <!-- Patient table -->
+            <rect x="60" y="130" width="180" height="10" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <!-- Beam indicator -->
+            <text x="100" y="52" font-size="7" fill="rgba(200,169,110,0.5)" text-anchor="middle" font-family="Montserrat,sans-serif">X-Ray</text>
+            <text x="150" y="228" font-size="7.5" fill="rgba(255,255,255,0.2)" text-anchor="middle" font-family="Montserrat,sans-serif" letter-spacing="2">FDX VISIONARY CS LITE</text>
+          </svg>
+        </div>
+      </div>
+      <div class="fade-up d1">
+        <span class="label de">Das Gerät</span><span class="label en">The device</span>
+        <div class="device-badge" style="margin-top:10px">FDX Visionary CS lite</div>
+        <h2 style="margin:14px 0 16px" class="de">Digitale Fluoroskopie — präzise in Echtzeit</h2>
+        <h2 style="margin:14px 0 16px" class="en">Digital fluoroscopy — precise in real time</h2>
+        <p class="de" style="margin-bottom:28px">Das FDX Visionary CS lite ist ein modernes digitales Durchleuchtungssystem mit hochauflösendem Flachdetektor. Es ermöglicht dynamische Röntgenuntersuchungen in Echtzeit bei minimierter Strahlenexposition — für präzise funktionelle Diagnostik.</p>
+        <p class="en" style="margin-bottom:28px">The FDX Visionary CS lite is a modern digital fluoroscopy system with a high-resolution flat-panel detector. It enables dynamic X-ray examinations in real time with minimised radiation exposure — for precise functional diagnostics.</p>
+        <div class="device-features">
+          <div class="df">
+            <div class="df-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><h4 class="de">Echtzeit-Bildgebung</h4><h4 class="en">Real-time imaging</h4><p class="de" style="font-size:.875rem;margin:0">Bewegungsabläufe wie Schlucken, Magenentleerung oder Gelenkfunktion werden dynamisch in Echtzeit dargestellt.</p><p class="en" style="font-size:.875rem;margin:0">Motion sequences such as swallowing, gastric emptying or joint function are displayed dynamically in real time.</p></div>
+          </div>
+          <div class="df">
+            <div class="df-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div><h4 class="de">Dosisoptimiertes digitales System</h4><h4 class="en">Dose-optimised digital system</h4><p class="de" style="font-size:.875rem;margin:0">Der digitale Flachdetektor ermöglicht eine deutliche Dosisreduktion gegenüber konventionellen Durchleuchtungssystemen bei gleichzeitig hoher Bildqualität.</p><p class="en" style="font-size:.875rem;margin:0">The digital flat-panel detector enables a significant dose reduction compared to conventional fluoroscopy systems while maintaining high image quality.</p></div>
+          </div>
+          <div class="df">
+            <div class="df-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div><h4 class="de">Digitaler Workflow</h4><h4 class="en">Digital workflow</h4><p class="de" style="font-size:.875rem;margin:0">Bilder werden digital gespeichert, sofort verfügbar und können direkt in den Befundbericht integriert werden. Kein Filmwechsel, kein Warten.</p><p class="en" style="font-size:.875rem;margin:0">Images are stored digitally, immediately available and can be directly integrated into the report. No film change, no waiting.</p></div>
+          </div>
+        </div>
+        <div class="device-specs">
+          <div class="spec-item"><div class="spec-v">Digital</div><div class="spec-l de">Flachdetektor-Technologie</div><div class="spec-l en">Flat-panel detector</div></div>
+          <div class="spec-item"><div class="spec-v">Live</div><div class="spec-l de">Echtzeit-Darstellung</div><div class="spec-l en">Real-time display</div></div>
+          <div class="spec-item"><div class="spec-v">Low</div><div class="spec-l de">Dosisoptimiert</div><div class="spec-l en">Dose optimised</div></div>
+          <div class="spec-item"><div class="spec-v">15–30'</div><div class="spec-l de">Ø Untersuchungszeit</div><div class="spec-l en">Avg. exam time</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label de">Indikationen</span><span class="label en">Indications</span>
+      <h2 style="margin:12px 0 14px" class="de">Was wir mit der Durchleuchtung untersuchen</h2>
+      <h2 style="margin:12px 0 14px" class="en">What we examine with fluoroscopy</h2>
+      <p class="de">Die Durchleuchtung eignet sich besonders für dynamische Untersuchungen, bei denen Bewegungsabläufe sichtbar gemacht werden müssen.</p>
+      <p class="en">Fluoroscopy is particularly suited for dynamic examinations where movement sequences need to be visualised.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card fade-up">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18" stroke-linecap="round"/></svg></div>
+        <h3 class="de">Magen-Darm-Trakt</h3><h3 class="en">Gastrointestinal tract</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Magenpassage, Dünndarm-Passage, Kolon-Kontrasteinlauf, funktionelle Magendiagnostik</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Gastric transit, small bowel transit, colonic contrast enema, functional gastric diagnostics</p>
+      </div>
+      <div class="ind-card fade-up d1">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <h3 class="de">Schluckakt (Ösophagus)</h3><h3 class="en">Swallowing (oesophagus)</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Schluckstörungen, Ösophagusdivertikei, Ösophagusstenosen, gastroösophagealer Reflux</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Swallowing disorders, oesophageal diverticula, oesophageal stenosis, gastro-oesophageal reflux</p>
+      </div>
+      <div class="ind-card fade-up d2">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M7 13c-2.76 1.13-5 3-5 5v1h20v-1c0-2-2.24-3.87-5-5"/></svg></div>
+        <h3 class="de">Gelenkinfiltrationen</h3><h3 class="en">Joint injections</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Bildgestützte Injektionen in Gelenke (Wirbelsäule, Hüfte, Knie) — präzise Platzierung von Kortison oder Hyaluronsäure</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Image-guided injections into joints (spine, hip, knee) — precise placement of cortisone or hyaluronic acid</p>
+      </div>
+      <div class="ind-card fade-up">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+        <h3 class="de">Arthrographien</h3><h3 class="en">Arthrography</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Darstellung von Gelenkinnenflächen mit Kontrastmittel — Schulter, Knie, Hüfte, Sprunggelenk (oft in Kombination mit MRT)</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Visualisation of joint surfaces with contrast medium — shoulder, knee, hip, ankle (often combined with MRI)</p>
+      </div>
+      <div class="ind-card fade-up d1">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h3 class="de">Urologie (MCU/Zystographie)</h3><h3 class="en">Urology (MCU/Cystography)</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Miktionszysturethrographie (MCU), Blasen- und Harnröhren-Darstellung, vesikoureteraler Reflux</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Micturating cystourethrography (MCU), bladder and urethra imaging, vesicoureteral reflux</p>
+      </div>
+      <div class="ind-card fade-up d2">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3 class="de">Kontrastmittelstudien</h3><h3 class="en">Contrast studies</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Fistulographie, Sialographie (Speicheldrüsen), Dakryozystographie (Tränenwege), Fisteldarstellung</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Fistulography, sialography (salivary glands), dacryocystography (tear ducts), fistula imaging</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">FAQ</span>
+      <h2 style="margin:12px 0 14px" class="de">Häufige Fragen zur Durchleuchtung</h2>
+      <h2 style="margin:12px 0 14px" class="en">Frequently asked questions about fluoroscopy</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <button class="faq-q">
+          <span class="de">Was ist eine Durchleuchtungsuntersuchung?</span><span class="en">What is a fluoroscopy examination?</span>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p class="de">Die Durchleuchtung (Fluoroskopie) ist ein Röntgenverfahren, das kontinuierliche Echtzeit-Bilder erzeugt — ähnlich einem Röntgen-Video. So können Bewegungsabläufe (z.B. Schlucken, Magenentleerung) oder die genaue Platzierung von Injektionsnadeln in Echtzeit verfolgt werden. Häufig wird ein Kontrastmittel eingesetzt, um Hohlräume oder Gefässe sichtbar zu machen.</p>
+          <p class="en">Fluoroscopy is an X-ray procedure that generates continuous real-time images — similar to an X-ray video. This allows movement sequences (e.g. swallowing, gastric emptying) or the precise placement of injection needles to be monitored in real time. A contrast medium is often used to make cavities or vessels visible.</p>
+        </div></div>
+      </div>
+      <div class="faq-item fade-up d1">
+        <button class="faq-q">
+          <span class="de">Ist die Strahlenbelastung bei der Durchleuchtung hoch?</span><span class="en">Is the radiation dose from fluoroscopy high?</span>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p class="de">Dank des modernen digitalen Flachdetektors im FDX Visionary CS lite ist die Strahlenbelastung deutlich geringer als bei älteren Systemen. Die Dosis wird so gering wie medizinisch möglich gehalten (ALARA-Prinzip). Für jeden Patienten wird die Strahlenexposition individuell minimiert. Bei Schwangeren wird die Durchleuchtung nur in klar begründeten medizinischen Fällen durchgeführt.</p>
+          <p class="en">Thanks to the modern digital flat-panel detector in the FDX Visionary CS lite, the radiation dose is significantly lower than with older systems. The dose is kept as low as medically possible (ALARA principle). Radiation exposure is individually minimised for each patient. In pregnant women, fluoroscopy is only performed in clearly justified medical cases.</p>
+        </div></div>
+      </div>
+      <div class="faq-item fade-up d2">
+        <button class="faq-q">
+          <span class="de">Was sind bildgestützte Gelenkinfiltrationen?</span><span class="en">What are image-guided joint injections?</span>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p class="de">Bei bildgestützten Gelenkinfiltrationen wird unter Röntgenkontrolle (Durchleuchtung) eine Nadel präzise in ein Gelenk oder einen Schleimbeutel geführt, um dort Medikamente (z.B. Kortison, Hyaluronsäure, Lokalanästhetikum) direkt am Ort des Geschehens einzubringen. Die bildgestützte Führung erhöht die Treffsicherheit erheblich und verbessert so die Wirksamkeit der Behandlung.</p>
+          <p class="en">In image-guided joint injections, a needle is precisely guided into a joint or bursa under X-ray control (fluoroscopy) to deliver medication (e.g. cortisone, hyaluronic acid, local anaesthetic) directly at the site. Image-guided guidance significantly increases accuracy and thus improves treatment effectiveness.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <h2 class="fade-up de">Bereit für Ihre Untersuchung?</h2>
+  <h2 class="fade-up en">Ready for your examination?</h2>
+  <p class="fade-up d1 de">Vereinbaren Sie jetzt Ihren Termin — schnell, unkompliziert und in angenehmer Atmosphäre.</p>
+  <p class="fade-up d1 en">Book your appointment now — quickly, easily and in a pleasant atmosphere.</p>
+  <div class="cta-actions fade-up d2">
+    <a href="index.html#termin" class="btn btn-gold">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span class="de">Termin vereinbaren</span><span class="en">Book appointment</span>
+    </a>
+    <a href="mailto:info@swiss-open-mri.ch" class="btn btn-outline-w">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span class="de">E-Mail senden</span><span class="en">Send email</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;text-decoration:none"><img src="bilder/logo/Swiss_Open_MRI_Logo_only.svg" alt="Swiss Open MRI" style="height:56px;width:auto;filter:brightness(0) invert(1)"></a>
+        <p class="de">Das führende Open MRI Zentrum in der Zentralschweiz. Eröffnung 2026.</p>
+        <p class="en">The leading Open MRI centre in Central Switzerland. Opening 2026.</p>
+      </div>
+      <div class="f-col">
+        <h4 class="de">Dienstleistungen</h4><h4 class="en">Services</h4>
+        <a href="mrt.html">MRT</a><a href="ct.html">CT</a>
+        <a href="ultraschall.html" class="de">Ultraschall</a><a href="ultraschall.html" class="en">Ultrasound</a>
+        <a href="durchleuchtung.html" class="de">Durchleuchtung</a><a href="durchleuchtung.html" class="en">Fluoroscopy</a>
+      </div>
+      <div class="f-col">
+        <h4 class="de">Information</h4><h4 class="en">Information</h4>
+        <a href="index.html#patienten" class="de">Patienten</a><a href="index.html#patienten" class="en">Patients</a>
+        <a href="index.html#zuweiser" class="de">Zuweiser</a><a href="index.html#zuweiser" class="en">Referrers</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#kontakt" class="de">Kontakt</a><a href="index.html#kontakt" class="en">Contact</a>
+      </div>
+      <div class="f-col">
+        <h4 class="de">Kontakt</h4><h4 class="en">Contact</h4>
+        <a href="tel:+41418801010">+41 XX XXX XX XX</a>
+        <a href="mailto:info@swiss-open-mri.ch">info@swiss-open-mri.ch</a>
+        <a>Kanton Schwyz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Swiss Open MRI. <span class="de">Alle Rechte vorbehalten.</span><span class="en">All rights reserved.</span></p>
+      <div class="footer-bottom-links">
+        <a href="#" class="de">Impressum</a><a href="#" class="en">Legal</a>
+        <a href="#" class="de">Datenschutz</a><a href="#" class="en">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta"><div class="mobile-cta-inner">
+  <a href="index.html#termin" class="btn btn-gold" style="font-size:.8125rem;padding:11px 14px">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span class="de">Termin buchen</span><span class="en">Book</span>
+  </a>
+</div></div>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.08,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+function setLang(lang){document.documentElement.setAttribute('data-lang',lang);document.documentElement.lang=lang;document.getElementById('btnDE').classList.toggle('active',lang==='de');document.getElementById('btnEN').classList.toggle('active',lang==='en')}
+document.getElementById('navToggle').addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('mobile-open'));
+document.querySelectorAll('.nav-drop-toggle').forEach(btn=>btn.addEventListener('click',e=>{if(window.innerWidth<768){e.stopPropagation();btn.closest('.nav-drop').classList.toggle('open')}}));
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-inner'))document.querySelector('.nav-links').classList.remove('mobile-open')});
+document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open')}));
+</script>
+</body>
+</html>

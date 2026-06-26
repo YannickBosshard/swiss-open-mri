@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRT — Magnetresonanztomographie | Swiss Open MRI</title>
+<meta name="description" content="MRT-Untersuchungen im offenen System — 1.2T OASIS Velocity. Keine Enge, kein Tunnel, höchste Bildqualität. Swiss Open MRI, Kanton Schwyz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0F1D58;--navy-mid:#182680;--navy-light:#1E3098;--navy-dark:#090E35;--gold:#C8A96E;--gold-light:#DFC28E;--cream:#F7F4EF;--white:#FFFFFF;--text-s:#4A5568;--text-m:#718096;--border:rgba(15,29,88,0.1);--shadow-md:0 4px 20px rgba(15,29,88,0.1);--shadow-lg:0 12px 48px rgba(15,29,88,0.15);--radius:12px;--radius-lg:20px;--ease:cubic-bezier(0.4,0,0.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',system-ui,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-weight:300;letter-spacing:-0.01em;line-height:1.2}
+h1{font-size:clamp(2.2rem,4.5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3vw,2.4rem)}
+h3{font-size:1.125rem;font-weight:400}
+p{font-size:1rem;line-height:1.75;color:var(--text-s)}
+.label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+.section{padding:96px 0}
+.section-header{text-align:center;margin-bottom:60px}
+.section-header h2{margin-bottom:14px}
+.section-header p{max-width:560px;margin:0 auto}
+[data-lang="de"] .en{display:none}[data-lang="en"] .de{display:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:100px;font-size:.9rem;font-weight:500;font-family:inherit;text-decoration:none;cursor:pointer;border:none;transition:.3s var(--ease);white-space:nowrap;letter-spacing:.02em}
+.btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-outline-w{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.45)}.btn-outline-w:hover{border-color:var(--white);background:rgba(255,255,255,.07)}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;background:var(--white);border-bottom:1px solid var(--border);transition:.4s var(--ease)}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav.scrolled{box-shadow:0 2px 20px rgba(15,29,88,0.09)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-img img{height:52px;width:auto;display:block}
+.nav-logo-text span{display:block;font-size:.95rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links>a{color:var(--text-s);text-decoration:none;font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}.nav-links>a:hover{color:var(--navy)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang-toggle{display:flex;align-items:center;gap:2px;background:var(--cream);border:1px solid var(--border);border-radius:100px;padding:3px}
+.lang-btn{background:none;border:none;color:var(--text-m);font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:4px 10px;border-radius:100px;cursor:pointer;font-family:inherit;transition:.2s}.lang-btn.active{background:var(--navy);color:var(--white)}
+.nav-book{background:var(--gold);color:var(--navy);padding:9px 20px;border-radius:100px;font-size:.8rem;font-weight:600;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:.3s var(--ease)}.nav-book:hover{background:var(--gold-light)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--navy);margin:5px 0}
+.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop-toggle{display:flex;align-items:center;gap:5px;color:var(--text-s);font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0}
+.nav-drop:hover .nav-drop-toggle{color:var(--navy)}
+.nav-drop-toggle svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform .2s;flex-shrink:0}
+.nav-drop:hover .nav-drop-toggle svg{transform:rotate(180deg)}
+.drop-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(-6px);background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:8px;min-width:250px;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;pointer-events:none}
+.nav-drop:hover .drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.drop-menu a{display:block;padding:10px 14px;border-radius:8px;color:var(--text-s);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.03em;transition:.15s;white-space:nowrap}
+.drop-menu a:hover,.drop-menu a.active{background:var(--cream);color:var(--navy);font-weight:600}
+/* HERO */
+.page-hero{background:var(--navy-dark);padding:140px 24px 90px;position:relative;overflow:hidden}
+.page-hero-rings{position:absolute;inset:0;pointer-events:none}
+.page-hero-inner{position:relative;z-index:2;max-width:1160px;margin:0 auto}
+.page-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.22);color:var(--gold);padding:6px 16px;border-radius:100px;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}
+.page-hero h1{color:var(--white);margin-bottom:14px;max-width:820px}
+.page-hero h1 em{font-style:normal;color:var(--gold)}
+.page-hero-desc{font-size:1.05rem;color:rgba(255,255,255,.55);margin-bottom:36px;max-width:600px;line-height:1.75}
+.page-hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+/* DEVICE */
+.device-section{background:var(--cream);padding:80px 0}
+.device-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.device-visual{background:var(--navy);border-radius:var(--radius-lg);padding:48px;display:flex;align-items:center;justify-content:center;min-height:340px;position:relative;overflow:hidden}
+.device-visual-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(200,169,110,.07) 0%,transparent 70%)}
+.device-badge{display:inline-flex;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.2);color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.device-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
+.spec-item{background:var(--white);border-radius:var(--radius);padding:18px;text-align:center;border:1px solid var(--border)}
+.spec-v{font-size:1.35rem;font-weight:600;color:var(--navy);letter-spacing:-.02em}
+.spec-l{font-size:.72rem;color:var(--text-m);margin-top:3px}
+.device-features{display:flex;flex-direction:column;gap:22px;margin-top:28px}
+.df{display:flex;gap:14px;align-items:flex-start}
+.df-icon{width:34px;height:34px;border-radius:8px;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.df-icon svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.75}
+.df h4{font-size:.9375rem;font-weight:500;margin-bottom:3px}
+.df p{font-size:.875rem;margin:0}
+/* INDICATIONS */
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ind-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;transition:.3s var(--ease)}
+.ind-card:hover{box-shadow:var(--shadow-md);border-color:rgba(200,169,110,.3);transform:translateY(-2px)}
+.ind-icon{width:40px;height:40px;border-radius:8px;background:var(--cream);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.ind-icon svg{width:18px;height:18px;stroke:var(--navy);fill:none;stroke-width:1.5}
+.ind-card h3{font-size:.9375rem;font-weight:500;margin-bottom:6px}
+.ind-card p{font-size:.8125rem;margin:0;line-height:1.6}
+/* FAQ */
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--white)}
+.faq-q{width:100%;background:none;border:none;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;font-family:inherit;font-size:.9375rem;font-weight:500;color:var(--navy);text-align:left;transition:.2s}
+.faq-q:hover{background:var(--cream)}
+.faq-q svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:2;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
+.faq-item.open .faq-a{max-height:400px}
+.faq-a-inner{padding:0 24px 22px;font-size:.9rem;color:var(--text-s);line-height:1.75}
+/* CTA */
+.cta-section{background:var(--navy);padding:100px 24px;text-align:center;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(200,169,110,.04) 0%,transparent 60%);pointer-events:none}
+.cta-section h2{color:var(--white);margin-bottom:14px;position:relative;z-index:1}
+.cta-section>p{color:rgba(255,255,255,.55);max-width:480px;margin:0 auto 36px;position:relative;z-index:1}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+/* FOOTER */
+.footer{background:var(--navy-dark);padding:64px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.footer-brand p{color:rgba(255,255,255,.42);font-size:.8125rem;margin-top:14px;max-width:260px;line-height:1.7}
+.f-col h4{color:rgba(255,255,255,.65);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.f-col a{display:block;color:rgba(255,255,255,.42);font-size:.8125rem;text-decoration:none;margin-bottom:9px;transition:color .2s}.f-col a:hover{color:rgba(255,255,255,.8)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{color:rgba(255,255,255,.28);font-size:.75rem}
+.footer-bottom-links a{color:rgba(255,255,255,.28);font-size:.75rem;text-decoration:none;margin-left:20px}
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+/* MOBILE */
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(9,14,53,.97);border-top:1px solid rgba(255,255,255,.07);padding:10px 20px;z-index:90;backdrop-filter:blur(20px)}
+.mobile-cta-inner{display:flex;gap:10px}
+.mobile-cta a{flex:1;text-align:center;justify-content:center}
+@media(max-width:1024px){
+  .device-grid{grid-template-columns:1fr;gap:48px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .section{padding:72px 0}
+  .nav-links{display:none}
+  .nav-links.mobile-open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;gap:0;box-shadow:0 8px 24px rgba(15,29,88,.08);z-index:99}
+  .nav-links.mobile-open>a{padding:11px 0;border-bottom:1px solid var(--border);font-size:.875rem}
+  .nav-links.mobile-open>a:last-child{border-bottom:none}
+  .nav-drop{width:100%;flex-direction:column;align-items:flex-start}
+  .nav-drop-toggle{padding:11px 0;width:100%;justify-content:space-between;border-bottom:1px solid var(--border);font-size:.875rem}
+  .drop-menu{position:static;transform:none !important;opacity:1;visibility:visible;box-shadow:none;border:none;background:var(--cream);border-radius:8px;padding:6px;margin:4px 0 8px;display:none;pointer-events:auto;min-width:unset;width:100%}
+  .nav-drop.open .drop-menu{display:block}
+  .nav-toggle{display:block}
+  .ind-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .mobile-cta{display:block}
+  body{padding-bottom:68px}
+}
+@media(max-width:480px){
+  .ind-grid{grid-template-columns:1fr}
+  .page-hero-actions{flex-direction:column}
+  .device-specs{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-img"><img src="bilder/logo/Swiss_Open_MRI_Logo_only.svg" alt="Swiss Open MRI"></div>
+      <div class="nav-logo-text"><span>Swiss Open MRI</span></div>
+    </a>
+    <div class="nav-links">
+      <div class="nav-drop">
+        <button class="nav-drop-toggle"><span class="de">Dienstleistungen</span><span class="en">Services</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drop-menu">
+          <a href="mrt.html" class="active">MRT — Magnetresonanztomographie</a>
+          <a href="ct.html">CT — Computertomographie</a>
+          <a href="ultraschall.html">Ultraschall / Sonographie</a>
+          <a href="durchleuchtung.html">Durchleuchtung / Fluoroskopie</a>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <button class="nav-drop-toggle"><span class="de">Fachbereiche</span><span class="en">Specialties</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drop-menu">
+          <a href="muskuloskelettale-radiologie.html">Muskuloskelettale Radiologie</a>
+          <a href="neuroradiologie.html">Neuroradiologie</a>
+          <a href="abdominelle-radiologie.html">Abdominelle Radiologie</a>
+          <a href="thorakale-radiologie.html">Thorakale Radiologie</a>
+          <a href="gefaessdiagnostik.html">Gefässdiagnostik</a>
+        </div>
+      </div>
+      <a href="index.html#patienten"><span class="de">Patienten</span><span class="en">Patients</span></a>
+      <a href="index.html#zuweiser"><span class="de">Zuweiser</span><span class="en">Referrers</span></a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btnDE" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="index.html#termin" class="nav-book de">Termin buchen</a>
+      <a href="index.html#termin" class="nav-book en">Book appointment</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-rings">
+    <svg width="100%" height="100%" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="1000" cy="250" r="220" fill="none" stroke="rgba(200,169,110,0.06)" stroke-width="1"/>
+      <circle cx="1000" cy="250" r="160" fill="none" stroke="rgba(200,169,110,0.09)" stroke-width="1.5"/>
+      <circle cx="1000" cy="250" r="100" fill="none" stroke="rgba(200,169,110,0.14)" stroke-width="2"/>
+      <circle cx="1000" cy="250" r="50" fill="rgba(200,169,110,0.04)" stroke="rgba(200,169,110,0.25)" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="page-hero-inner">
+    <div class="page-hero-badge">
+      <svg width="10" height="10" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>
+      <span class="de">Dienstleistungen · Swiss Open MRI</span>
+      <span class="en">Services · Swiss Open MRI</span>
+    </div>
+    <h1 class="de"><em>MRT</em> — Magnetresonanztomographie</h1>
+    <h1 class="en"><em>MRI</em> — Magnetic Resonance Imaging</h1>
+    <p class="page-hero-desc de">Modernste offene MRT-Diagnostik mit dem 1.2T OASIS Velocity. Höchste Bildqualität ohne Tunnelgefühl — schonend, präzise und für alle Patienten geeignet.</p>
+    <p class="page-hero-desc en">State-of-the-art open MRI diagnostics with the 1.2T OASIS Velocity. Highest image quality without tunnel feeling — gentle, precise, suitable for all patients.</p>
+    <div class="page-hero-actions">
+      <a href="index.html#termin" class="btn btn-gold">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="de">Termin vereinbaren</span><span class="en">Book appointment</span>
+      </a>
+      <a href="index.html#kontakt" class="btn btn-outline-w">
+        <span class="de">Fragen? Kontakt aufnehmen</span><span class="en">Questions? Get in touch</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DEVICE -->
+<section class="device-section">
+  <div class="container">
+    <div class="device-grid">
+      <div class="fade-up">
+        <div class="device-visual">
+          <div class="device-visual-bg"></div>
+          <svg width="100%" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;max-width:280px">
+            <!-- Open MRI U-shape design -->
+            <rect x="30" y="20" width="240" height="200" rx="6" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="1"/>
+            <!-- Top magnet -->
+            <rect x="50" y="30" width="200" height="55" rx="8" fill="rgba(200,169,110,0.12)" stroke="rgba(200,169,110,0.35)" stroke-width="1.5"/>
+            <text x="150" y="62" font-size="9" fill="rgba(200,169,110,0.7)" text-anchor="middle" font-family="Montserrat,sans-serif" letter-spacing="1">OASIS VELOCITY 1.2T</text>
+            <!-- Left pillar -->
+            <rect x="50" y="85" width="35" height="120" rx="4" fill="rgba(200,169,110,0.08)" stroke="rgba(200,169,110,0.25)" stroke-width="1"/>
+            <!-- Right pillar -->
+            <rect x="215" y="85" width="35" height="120" rx="4" fill="rgba(200,169,110,0.08)" stroke="rgba(200,169,110,0.25)" stroke-width="1"/>
+            <!-- Bottom magnet -->
+            <rect x="50" y="155" width="200" height="50" rx="8" fill="rgba(200,169,110,0.12)" stroke="rgba(200,169,110,0.35)" stroke-width="1.5"/>
+            <!-- Patient table -->
+            <rect x="95" y="120" width="110" height="12" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <!-- Open space indicator -->
+            <line x1="85" y1="100" x2="85" y2="155" stroke="rgba(200,169,110,0.2)" stroke-width="1" stroke-dasharray="4,3"/>
+            <line x1="215" y1="100" x2="215" y2="155" stroke="rgba(200,169,110,0.2)" stroke-width="1" stroke-dasharray="4,3"/>
+            <!-- Field strength label -->
+            <text x="150" y="218" font-size="8" fill="rgba(255,255,255,0.2)" text-anchor="middle" font-family="Montserrat,sans-serif" letter-spacing="2">HITACHI · OPEN MRI · 1.2 TESLA</text>
+          </svg>
+        </div>
+      </div>
+      <div class="fade-up d1">
+        <span class="label de">Das Gerät</span>
+        <span class="label en">The device</span>
+        <div class="device-badge" style="margin-top:10px">Hitachi OASIS Velocity</div>
+        <h2 style="margin:14px 0 16px" class="de">1.2T Open MRI — offenes Design ohne Kompromisse</h2>
+        <h2 style="margin:14px 0 16px" class="en">1.2T Open MRI — open design without compromise</h2>
+        <p class="de" style="margin-bottom:28px">Das Hitachi OASIS Velocity ist ein offenes MRT-System im U-förmigen Design. Dank der vollständig offenen Bauweise gibt es keine beengende Röhre — der Patient liegt frei, in einem offenen, luftigen Untersuchungsraum.</p>
+        <p class="en" style="margin-bottom:28px">The Hitachi OASIS Velocity is an open MRI system with a U-shaped design. Thanks to its completely open construction, there is no confined tube — the patient lies freely in an open, airy examination space.</p>
+        <div class="device-features">
+          <div class="df">
+            <div class="df-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+            <div><h4 class="de">Kein Tunnel, keine Enge</h4><h4 class="en">No tunnel, no constriction</h4><p class="de" style="font-size:.875rem;margin:0">Die U-Form des Geräts lässt alle Seiten offen. Ideal für Patienten mit Klaustrophobie, Übergewicht oder Angstgefühlen.</p><p class="en" style="font-size:.875rem;margin:0">The U-shape leaves all sides open. Ideal for patients with claustrophobia, obesity, or anxiety.</p></div>
+          </div>
+          <div class="df">
+            <div class="df-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div><h4 class="de">Geräuscharm & angenehm</h4><h4 class="en">Low noise & comfortable</h4><p class="de" style="font-size:.875rem;margin:0">Permanentmagnet-Systeme arbeiten deutlich leiser als supraleitende Geräte — ein entspanntes Untersuchungserlebnis.</p><p class="en" style="font-size:.875rem;margin:0">Permanent magnet systems operate significantly quieter than superconducting devices — a relaxed examination experience.</p></div>
+          </div>
+          <div class="df">
+            <div class="df-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div><h4 class="de">Für alle Patienten geeignet</h4><h4 class="en">Suitable for all patients</h4><p class="de" style="font-size:.875rem;margin:0">Kinder, Senioren, grossgewachsene Personen und Patienten bis 180 kg — das offene Design schafft Raum für jeden.</p><p class="en" style="font-size:.875rem;margin:0">Children, seniors, tall individuals and patients up to 180 kg — the open design creates space for everyone.</p></div>
+          </div>
+        </div>
+        <div class="device-specs">
+          <div class="spec-item"><div class="spec-v">1.2T</div><div class="spec-l de">Magnetfeldstärke</div><div class="spec-l en">Field strength</div></div>
+          <div class="spec-item"><div class="spec-v">Open</div><div class="spec-l de">U-Design, kein Tunnel</div><div class="spec-l en">U-design, no tunnel</div></div>
+          <div class="spec-item"><div class="spec-v">180 kg</div><div class="spec-l de">Max. Patientengewicht</div><div class="spec-l en">Max. patient weight</div></div>
+          <div class="spec-item"><div class="spec-v">20–40'</div><div class="spec-l de">Ø Untersuchungszeit</div><div class="spec-l en">Avg. scan time</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDICATIONS -->
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label de">Indikationen</span>
+      <span class="label en">Indications</span>
+      <h2 style="margin:12px 0 14px" class="de">Was wir mit dem MRT untersuchen</h2>
+      <h2 style="margin:12px 0 14px" class="en">What we examine with MRI</h2>
+      <p class="de">Das MRT ist vielseitig einsetzbar — von der Wirbelsäule bis zum Gehirn, von den Gelenken bis zu den inneren Organen.</p>
+      <p class="en">MRI is versatile — from the spine to the brain, from joints to internal organs.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card fade-up">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8" stroke-width="1.5"/></svg></div>
+        <h3 class="de">Wirbelsäule & Rücken</h3><h3 class="en">Spine & back</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Bandscheibenvorfälle, HWS/BWS/LWS, Stenosen, Nervenkompression, Spondylarthrose</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Disc herniation, cervical/thoracic/lumbar spine, stenosis, nerve compression, spondylarthrosis</p>
+      </div>
+      <div class="ind-card fade-up d1">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M7 13c-2.76 1.13-5 3-5 5v1h20v-1c0-2-2.24-3.87-5-5"/></svg></div>
+        <h3 class="de">Gelenke</h3><h3 class="en">Joints</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Knie, Schulter, Hüfte, Sprunggelenk, Handgelenk — Knorpel, Bänder, Menisken, Sehnen</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Knee, shoulder, hip, ankle, wrist — cartilage, ligaments, menisci, tendons</p>
+      </div>
+      <div class="ind-card fade-up d2">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <h3 class="de">Kopf & Gehirn</h3><h3 class="en">Head & brain</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Tumore, Schlaganfall, Multiple Sklerose, Demenz, Kopfschmerzen, Sinusitis, Orbita</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Tumours, stroke, multiple sclerosis, dementia, headaches, sinusitis, orbit</p>
+      </div>
+      <div class="ind-card fade-up">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18" stroke-linecap="round"/></svg></div>
+        <h3 class="de">Abdomen & Becken</h3><h3 class="en">Abdomen & pelvis</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Leber, Nieren, Bauchspeicheldrüse, Prostata, Uterus, Blase, gynäkologische Diagnostik</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Liver, kidneys, pancreas, prostate, uterus, bladder, gynaecological diagnostics</p>
+      </div>
+      <div class="ind-card fade-up d1">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="de">MR-Angiographie</h3><h3 class="en">MR angiography</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Darstellung der Blutgefässe ohne Strahlung — Aorta, Nierenarterien, Becken- und Beingefässe</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Visualisation of blood vessels without radiation — aorta, renal arteries, pelvic and leg vessels</p>
+      </div>
+      <div class="ind-card fade-up d2">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+        <h3 class="de">Weichteile & Muskeln</h3><h3 class="en">Soft tissue & muscles</h3>
+        <p class="de" style="font-size:.8125rem;margin:0;line-height:1.6">Muskel-, Sehnen- und Bänderverletzungen, Weichteiltumoren, Lymphknoten, Entzündungen</p>
+        <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Muscle, tendon and ligament injuries, soft tissue tumours, lymph nodes, inflammation</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">FAQ</span>
+      <h2 style="margin:12px 0 14px" class="de">Häufige Fragen zur MRT</h2>
+      <h2 style="margin:12px 0 14px" class="en">Frequently asked questions about MRI</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <button class="faq-q">
+          <span class="de">Wie lange dauert eine MRT-Untersuchung?</span>
+          <span class="en">How long does an MRI examination take?</span>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p class="de">Die meisten MRT-Untersuchungen dauern zwischen 20 und 45 Minuten, abhängig von der untersuchten Körperregion und dem klinischen Fragestellung. Gelenkuntersuchungen sind oft kürzer, komplexere Abdomen- oder Schädelaufnahmen können etwas länger dauern. Wir informieren Sie vorab über die geplante Dauer.</p>
+          <p class="en">Most MRI examinations take between 20 and 45 minutes, depending on the body region examined and the clinical question. Joint examinations are often shorter; more complex abdominal or cranial scans may take somewhat longer. We will inform you in advance of the planned duration.</p>
+        </div></div>
+      </div>
+      <div class="faq-item fade-up d1">
+        <button class="faq-q">
+          <span class="de">Ist MRT strahlenlos und sicher?</span>
+          <span class="en">Is MRI radiation-free and safe?</span>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p class="de">Ja, die MRT arbeitet mit Magnetfeldern und Radiowellen — vollständig ohne ionisierende Strahlung. Die Methode gilt als sehr sicher und kann, wenn nötig, mehrfach wiederholt werden. Bei Schwangerschaft, implantierten Metallteilen (z.B. Herzschrittmacher) oder Metallfremdkörpern informieren Sie uns bitte vorab.</p>
+          <p class="en">Yes, MRI works with magnetic fields and radio waves — completely without ionising radiation. The method is considered very safe and can be repeated if necessary. Please inform us in advance if you are pregnant, have implanted metal parts (e.g. pacemaker), or metal foreign bodies.</p>
+        </div></div>
+      </div>
+      <div class="faq-item fade-up d2">
+        <button class="faq-q">
+          <span class="de">Brauche ich eine ärztliche Zuweisung für eine MRT?</span>
+          <span class="en">Do I need a doctor's referral for an MRI?</span>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p class="de">Für die Kostenübernahme durch die Grundversicherung (KVG) ist grundsätzlich eine ärztliche Zuweisung erforderlich. Eine Selbstzahler-Untersuchung ist auch ohne Zuweisung möglich. Wir beraten Sie gerne telefonisch oder per E-Mail über die genauen Voraussetzungen und Kosten.</p>
+          <p class="en">For coverage by basic health insurance (KVG), a doctor's referral is generally required. A self-pay examination is also possible without a referral. We are happy to advise you by phone or email about the exact requirements and costs.</p>
+        </div></div>
+      </div>
+      <div class="faq-item fade-up d3">
+        <button class="faq-q">
+          <span class="de">Was muss ich zur Untersuchung mitbringen?</span>
+          <span class="en">What do I need to bring to the examination?</span>
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p class="de">Bringen Sie bitte Ihre Krankenkassenkarte, die ärztliche Zuweisung, bereits vorhandene Voruntersuchungen (Röntgen, CT, frühere MRT-Bilder) sowie eine Liste Ihrer Medikamente und Implantate mit. Tragen Sie bitte keine Metallschmuckstücke oder Uhren. Bequeme Kleidung ohne Metallteile ist empfehlenswert.</p>
+          <p class="en">Please bring your health insurance card, doctor's referral, any previous examinations (X-ray, CT, earlier MRI images), and a list of your medications and implants. Please do not wear metal jewellery or watches. Comfortable clothing without metal parts is recommended.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <h2 class="fade-up de">Bereit für Ihre MRT-Untersuchung?</h2>
+  <h2 class="fade-up en">Ready for your MRI examination?</h2>
+  <p class="fade-up d1 de">Vereinbaren Sie jetzt Ihren Termin — schnell, unkompliziert und in entspannter Atmosphäre.</p>
+  <p class="fade-up d1 en">Book your appointment now — quickly, easily, and in a relaxed atmosphere.</p>
+  <div class="cta-actions fade-up d2">
+    <a href="index.html#termin" class="btn btn-gold">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span class="de">Termin vereinbaren</span><span class="en">Book appointment</span>
+    </a>
+    <a href="mailto:info@swiss-open-mri.ch" class="btn btn-outline-w">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span class="de">E-Mail senden</span><span class="en">Send email</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;text-decoration:none">
+          <img src="bilder/logo/Swiss_Open_MRI_Logo_only.svg" alt="Swiss Open MRI" style="height:56px;width:auto;filter:brightness(0) invert(1)">
+        </a>
+        <p class="de">Das führende Open MRI Zentrum in der Zentralschweiz. Modernste Diagnostik, maximaler Patientenkomfort, höchste Schweizer Qualität. Eröffnung 2026.</p>
+        <p class="en">The leading Open MRI centre in Central Switzerland. Opening 2026.</p>
+      </div>
+      <div class="f-col">
+        <h4 class="de">Dienstleistungen</h4><h4 class="en">Services</h4>
+        <a href="mrt.html">MRT</a>
+        <a href="ct.html">CT</a>
+        <a href="ultraschall.html" class="de">Ultraschall</a><a href="ultraschall.html" class="en">Ultrasound</a>
+        <a href="durchleuchtung.html" class="de">Durchleuchtung</a><a href="durchleuchtung.html" class="en">Fluoroscopy</a>
+      </div>
+      <div class="f-col">
+        <h4 class="de">Information</h4><h4 class="en">Information</h4>
+        <a href="index.html#technologie" class="de">Technologie</a><a href="index.html#technologie" class="en">Technology</a>
+        <a href="index.html#patienten" class="de">Patienten</a><a href="index.html#patienten" class="en">Patients</a>
+        <a href="index.html#zuweiser" class="de">Zuweiser</a><a href="index.html#zuweiser" class="en">Referrers</a>
+        <a href="index.html#kontakt" class="de">Kontakt</a><a href="index.html#kontakt" class="en">Contact</a>
+      </div>
+      <div class="f-col">
+        <h4 class="de">Kontakt</h4><h4 class="en">Contact</h4>
+        <a href="tel:+41418801010">+41 XX XXX XX XX</a>
+        <a href="mailto:info@swiss-open-mri.ch">info@swiss-open-mri.ch</a>
+        <a>Kanton Schwyz</a>
+        <br>
+        <a href="#" class="de">Impressum</a><a href="#" class="en">Legal notice</a>
+        <a href="#" class="de">Datenschutz</a><a href="#" class="en">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Swiss Open MRI. <span class="de">Alle Rechte vorbehalten.</span><span class="en">All rights reserved.</span></p>
+      <div class="footer-bottom-links">
+        <a href="#" class="de">Impressum</a><a href="#" class="en">Legal</a>
+        <a href="#" class="de">Datenschutz</a><a href="#" class="en">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <div class="mobile-cta-inner">
+    <a href="index.html#termin" class="btn btn-gold" style="font-size:.8125rem;padding:11px 14px">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span class="de">Termin buchen</span><span class="en">Book</span>
+    </a>
+  </div>
+</div>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.08,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+function setLang(lang){document.documentElement.setAttribute('data-lang',lang);document.documentElement.lang=lang;document.getElementById('btnDE').classList.toggle('active',lang==='de');document.getElementById('btnEN').classList.toggle('active',lang==='en')}
+document.getElementById('navToggle').addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('mobile-open'));
+document.querySelectorAll('.nav-drop-toggle').forEach(btn=>btn.addEventListener('click',e=>{if(window.innerWidth<768){e.stopPropagation();btn.closest('.nav-drop').classList.toggle('open')}}));
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-inner'))document.querySelector('.nav-links').classList.remove('mobile-open')});
+document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open')}));
+</script>
+</body>
+</html>
