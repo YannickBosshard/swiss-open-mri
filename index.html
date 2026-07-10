@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de" data-lang="de">
 <head>
 <meta charset="UTF-8">
@@ -83,7 +83,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
 .nav-logo-text{color:var(--navy)}
 .nav-logo-text span{display:block;font-size:.95rem;font-weight:600;letter-spacing:.06em;line-height:1.25;text-transform:uppercase;color:var(--navy);white-space:nowrap}
 .nav-logo-text small{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-m);font-weight:400}
-.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links{display:flex;align-items:center;gap:28px;margin-left:32px}
 .nav-links a{color:var(--text-s);text-decoration:none;font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--navy)}
 .nav-right{display:flex;align-items:center;gap:16px}
@@ -99,7 +99,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
 .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--navy);margin:5px 0;transition:.3s var(--ease)}
 
 /* NAV DROPDOWNS */
-.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop{position:relative;display:flex;align-items:center}.nav-drop::after{content:"";position:absolute;top:100%;left:0;right:0;height:20px}
 .nav-drop-toggle{display:flex;align-items:center;gap:5px;color:var(--text-s);font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0}
 .nav-drop:hover .nav-drop-toggle,.nav-drop.open .nav-drop-toggle{color:var(--navy)}
 .nav-drop-toggle svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform .2s;flex-shrink:0}
@@ -111,7 +111,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
 .drop-menu a.active{color:var(--navy);font-weight:600}
 
 /* HERO */
-.hero{background:var(--navy-dark);min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:120px 24px 80px}
+.hero{background:var(--navy-dark);min-height:auto;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px 24px 60px}
 .hero-rings{position:absolute;inset:0;pointer-events:none}
 .hero-inner{position:relative;z-index:2;max-width:1160px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.22);color:var(--gold);padding:6px 16px;border-radius:100px;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px}
@@ -381,21 +381,22 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         </div>
       </div>
       <div class="nav-drop">
-        <button class="nav-drop-toggle">
+        <a href="fachbereiche.html" class="nav-drop-toggle">
           <span class="de">Fachbereiche</span><span class="en">Specialties</span>
           <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
+        </a>
         <div class="drop-menu">
           <a href="muskuloskelettale-radiologie.html">Muskuloskelettale Radiologie</a>
           <a href="neuroradiologie.html">Neuroradiologie</a>
           <a href="abdominelle-radiologie.html">Abdominelle Radiologie</a>
           <a href="thorakale-radiologie.html">Thorakale Radiologie</a>
           <a href="gefaessdiagnostik.html">Gefässdiagnostik</a>
+          <a href="schmerztherapie.html">Schmerztherapie</a>
+          <a href="mamma-mrt.html">Mamma-MRT</a>
         </div>
       </div>
       <a href="#patienten"><span class="de">Patienten</span><span class="en">Patients</span></a>
       <a href="#zuweiser"><span class="de">Zuweiser</span><span class="en">Referrers</span></a>
-      <a href="#faq">FAQ</a>
       <a href="#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a>
     </div>
     <div class="nav-right">
@@ -441,7 +442,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
     </svg>
   </div>
   <div class="hero-inner container" style="padding:0 24px">
-    <div class="hero-content">
+    <div class="hero-content" style="padding-top:60px">
       <div class="hero-badge">
         <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <span class="de">Zentralschweiz · Eröffnung 2026</span>
@@ -461,23 +462,6 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
           <span class="de">Unsere Technologie</span><span class="en">Our technology</span>
           <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-      </div>
-      <div class="hero-stats">
-        <div>
-          <div class="hero-stat-n">3T</div>
-          <div class="hero-stat-l de">Magnetfeldstärke</div>
-          <div class="hero-stat-l en">Field strength</div>
-        </div>
-        <div>
-          <div class="hero-stat-n">70cm</div>
-          <div class="hero-stat-l de">Bohrungsweite</div>
-          <div class="hero-stat-l en">Bore diameter</div>
-        </div>
-        <div>
-          <div class="hero-stat-n">&lt;30'</div>
-          <div class="hero-stat-l de">Ø Untersuchung</div>
-          <div class="hero-stat-l en">Avg. scan time</div>
-        </div>
       </div>
     </div>
     <!-- Right column: brand ring art + feature cards -->
@@ -518,21 +502,6 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
     </div>
   </div>
 </section>
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-bar-inner">
-    <div class="t-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="de">FMH-Facharztstandard</span><span class="en">FMH specialist standard</span></div>
-    <div class="t-div"></div>
-    <div class="t-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg><span class="de">Krankenkassen anerkannt</span><span class="en">Health insurance approved</span></div>
-    <div class="t-div"></div>
-    <div class="t-item"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span class="de">3T Wide-Bore Open MRI</span><span class="en">3T Wide-Bore Open MRI</span></div>
-    <div class="t-div"></div>
-    <div class="t-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span class="de">Erfahrenes Fachärzteteam</span><span class="en">Experienced specialist team</span></div>
-    <div class="t-div"></div>
-    <div class="t-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Kanton Schwyz</span></div>
-  </div>
-</div>
 
 <!-- TECHNOLOGY -->
 <section class="section" id="technologie" style="background:var(--white)">
@@ -616,87 +585,6 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
   </div>
 </section>
 
-<!-- ADVANTAGES -->
-<section class="section" id="vorteile" style="background:var(--cream)">
-  <div class="container">
-    <div class="section-header fade-up">
-      <span class="label de">Warum Open MRI?</span>
-      <span class="label en">Why Open MRI?</span>
-      <h2 style="margin:12px 0 14px" class="de">Designed für den Menschen</h2>
-      <h2 style="margin:12px 0 14px" class="en">Designed for people</h2>
-      <p class="de">Traditionelle MRT-Geräte wurden für technische Leistung entwickelt. Unser Open MRI wurde für maximalen Patientenkomfort und höchste Diagnostik gleichzeitig konzipiert.</p>
-      <p class="en">Traditional MRI machines were built for technical performance. Our Open MRI was designed for maximum patient comfort and highest diagnostic quality simultaneously.</p>
-    </div>
-    <div class="adv-grid">
-      <div class="adv-card fade-up d1">
-        <div class="adv-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3 class="de">Kein Tunnel — offener Raum</h3><h3 class="en">No tunnel — open space</h3>
-        <p class="de" style="font-size:.875rem;margin:0">Anders als bei geschlossenen MRT-Geräten liegen Sie in einem weiten, offenen Untersuchungsbereich. Für viele Patienten ist das der entscheidende Unterschied.</p>
-        <p class="en" style="font-size:.875rem;margin:0">Unlike closed MRI machines, you lie in a wide, open examination space. For many patients, this is the decisive difference.</p>
-      </div>
-      <div class="adv-card fade-up d2">
-        <div class="adv-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-        <h3 class="de">Ideal bei Platzangst</h3><h3 class="en">Ideal for claustrophobia</h3>
-        <p class="de" style="font-size:.875rem;margin:0">Rund 30% aller Menschen erleben in konventionellen MRT-Geräten Unbehagen. Unser Open MRI ermöglicht auch klaustrophobischen Patienten eine entspannte Untersuchung.</p>
-        <p class="en" style="font-size:.875rem;margin:0">Around 30% of people experience discomfort in conventional MRI scanners. Our Open MRI enables even claustrophobic patients to have a relaxed examination.</p>
-      </div>
-      <div class="adv-card fade-up d3">
-        <div class="adv-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg></div>
-        <h3 class="de">Für alle Altersgruppen</h3><h3 class="en">For all age groups</h3>
-        <p class="de" style="font-size:.875rem;margin:0">Der grosszügige Untersuchungsraum ist ideal für Kinder (eine Begleitperson kann dabei sein), ältere Menschen sowie Patienten mit grösserem Körperumfang.</p>
-        <p class="en" style="font-size:.875rem;margin:0">The spacious examination space is ideal for children (a companion can accompany them), elderly people, and patients with larger body dimensions.</p>
-      </div>
-      <div class="adv-card fade-up d1">
-        <div class="adv-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3 class="de">Schnelle Termine</h3><h3 class="en">Fast appointments</h3>
-        <p class="de" style="font-size:.875rem;margin:0">Durch optimierte Prozesse erhalten Patienten in der Regel innerhalb von 1–3 Werktagen einen Termin — auch kurzfristig auf Zuweisung.</p>
-        <p class="en" style="font-size:.875rem;margin:0">Through optimised processes, patients typically receive an appointment within 1–3 working days — also at short notice on referral.</p>
-      </div>
-      <div class="adv-card fade-up d2">
-        <div class="adv-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <h3 class="de">Höchste Bildqualität</h3><h3 class="en">Highest image quality</h3>
-        <p class="de" style="font-size:.875rem;margin:0">Offenes Design bedeutet keine Kompromisse bei der Bildqualität. Unsere 3T-Technologie liefert Aufnahmen auf Universitätsklinik-Niveau.</p>
-        <p class="en" style="font-size:.875rem;margin:0">Open design means no compromises on image quality. Our 3T technology delivers images at university clinic level.</p>
-      </div>
-      <div class="adv-card fade-up d3">
-        <div class="adv-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3 class="de">Schweizer Präzision</h3><h3 class="en">Swiss precision</h3>
-        <p class="de" style="font-size:.875rem;margin:0">Betrieben nach den strengsten Schweizer Qualitätsstandards, regelmässig zertifiziert und durch erfahrene Fachärzte für Radiologie FMH betreut.</p>
-        <p class="en" style="font-size:.875rem;margin:0">Operated to the strictest Swiss quality standards, regularly certified and supervised by experienced FMH radiology specialists.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- JOURNEY -->
-<section class="journey-section section" id="patienten">
-  <div class="j-bg"></div>
-  <div class="container">
-    <div class="section-header fade-up" style="position:relative;z-index:2">
-      <span class="label de">Ihr Weg zu uns</span>
-      <span class="label en">Your journey with us</span>
-      <h2 style="margin:12px 0 14px" class="de">Einfach. Entspannt. Präzise.</h2>
-      <h2 style="margin:12px 0 14px" class="en">Simple. Relaxed. Precise.</h2>
-      <p class="de">Von der Zuweisung bis zum Befund — wir begleiten Sie durch jeden Schritt mit Sorgfalt und Transparenz.</p>
-      <p class="en">From referral to report — we guide you through every step with care and transparency.</p>
-    </div>
-    <div class="j-steps">
-      <div class="j-step fade-up d1"><div class="j-num">01</div><h3 class="de">Anmeldung</h3><h3 class="en">Registration</h3><p class="de">Kommen Sie mit ärztlicher Zuweisung oder melden Sie sich direkt an. Unser Team berät Sie gerne telefonisch oder per E-Mail.</p><p class="en">Come with a doctor's referral or register directly. Our team is happy to advise you by phone or email.</p></div>
-      <div class="j-step fade-up d2"><div class="j-num">02</div><h3 class="de">Terminbestätigung</h3><h3 class="en">Appointment confirmed</h3><p class="de">Sie erhalten in der Regel innerhalb eines Werktages einen passenden Termin — auch morgens oder abends möglich.</p><p class="en">You will typically receive a suitable appointment within one working day — mornings and evenings also possible.</p></div>
-      <div class="j-step fade-up d3"><div class="j-num">03</div><h3 class="de">Empfang & Untersuchung</h3><h3 class="en">Reception & scan</h3><p class="de">Sie werden persönlich begrüsst. Unser Team erklärt den Ablauf und beantwortet alle Fragen — dann entspannt in die Untersuchung.</p><p class="en">You are personally welcomed. Our team explains the process and answers all questions — then a relaxed scan.</p></div>
-      <div class="j-step fade-up d4"><div class="j-num">04</div><h3 class="de">Befund in 24–48h</h3><h3 class="en">Report in 24–48h</h3><p class="de">Ihr Befund wird von einem unserer Fachärzte FMH erstellt und in der Regel innerhalb von 24–48 Stunden übermittelt.</p><p class="en">Your report is written by one of our FMH specialists and typically delivered within 24–48 hours.</p></div>
-    </div>
-    <div class="j-cta fade-up">
-      <p class="de">Bereit für Ihre Untersuchung? Vereinbaren Sie jetzt Ihren Termin.</p>
-      <p class="en">Ready for your examination? Book your appointment now.</p>
-      <a href="#termin" class="btn btn-gold">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span class="de">Jetzt Termin buchen</span><span class="en">Book appointment now</span>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- SERVICES -->
 <section class="section" id="untersuchungen" style="background:var(--white)">
   <div class="container">
@@ -764,96 +652,6 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
             <li class="de">Kardiovaskuläres Assessment</li><li class="en">Cardiovascular assessment</li>
             <li class="de">Sporttauglichkeits-Check</li><li class="en">Sports fitness check</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PATIENT INFO -->
-<section class="section" id="info" style="background:var(--cream)">
-  <div class="container">
-    <div class="info-grid">
-      <div class="fade-up">
-        <span class="label de">Patienteninformation</span>
-        <span class="label en">Patient information</span>
-        <h2 style="margin:12px 0 16px" class="de">Gut vorbereitet zur Untersuchung</h2>
-        <h2 style="margin:12px 0 16px" class="en">Well prepared for your scan</h2>
-        <p class="de">Wir möchten, dass Sie sich bei uns vollkommen wohl und gut informiert fühlen. Hier finden Sie alles Wichtige zur Vorbereitung auf Ihre MRT-Untersuchung.</p>
-        <p class="en">We want you to feel completely at ease and well-informed with us. Here you'll find everything important to prepare for your MRI examination.</p>
-        <div class="info-callout">
-          <h4 class="de">Haben Sie Fragen?</h4>
-          <h4 class="en">Have questions?</h4>
-          <p><span class="de">Unser Team ist Mo–Fr 07:30–18:00 Uhr erreichbar.</span><span class="en">Our team is available Mon–Fri 07:30–18:00.</span><br>
-          <a href="tel:+41418801010">+41 XX XXX XX XX</a> · <a href="mailto:info@swiss-open-mri.ch">info@swiss-open-mri.ch</a></p>
-        </div>
-      </div>
-      <div class="accordion fade-up d1">
-        <div class="acc-item open">
-          <button class="acc-btn" onclick="toggleAcc(this)">
-            <span class="de">Was muss ich zur Untersuchung mitbringen?</span>
-            <span class="en">What do I need to bring to the examination?</span>
-            <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="acc-body">
-            <span class="de">Bitte bringen Sie Ihren Zuweisungsschein, die Versicherungskarte sowie frühere Aufnahmen mit. Tragen Sie bequeme, metallfreie Kleidung. Schmuck und metallische Gegenstände müssen abgelegt werden.</span>
-            <span class="en">Please bring your referral slip, insurance card, and any previous images. Wear comfortable, metal-free clothing. Jewellery and metallic objects must be removed.</span>
-          </div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggleAcc(this)">
-            <span class="de">Ist das Open MRI für mich geeignet?</span>
-            <span class="en">Is the Open MRI suitable for me?</span>
-            <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="acc-body">
-            <span class="de">Das Open MRI ist für die grosse Mehrheit der Patienten geeignet. Bei Schrittmachern oder bestimmten Implantaten klären wir vorab ab, ob eine MRT sicher möglich ist.</span>
-            <span class="en">The Open MRI is suitable for the vast majority of patients. For pacemakers or certain implants, we clarify in advance whether an MRI scan is safely possible.</span>
-          </div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggleAcc(this)">
-            <span class="de">Wie lange dauert die Untersuchung?</span>
-            <span class="en">How long does the examination take?</span>
-            <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="acc-body">
-            <span class="de">Je nach Untersuchungsgebiet dauert eine MRT 20 bis 60 Minuten. Die meisten Standard-Untersuchungen dauern ca. 25–35 Minuten.</span>
-            <span class="en">Depending on the examination area, an MRI takes 20 to 60 minutes. Most standard examinations take approximately 25–35 minutes.</span>
-          </div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggleAcc(this)">
-            <span class="de">Kostenübernahme durch die Krankenkasse?</span>
-            <span class="en">Health insurance coverage?</span>
-            <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="acc-body">
-            <span class="de">MRT-Untersuchungen auf ärztliche Zuweisung werden von der OKP übernommen. Für Selbstzahler erstellen wir gerne vorab eine Kostenschätzung.</span>
-            <span class="en">MRI examinations on medical referral are covered by compulsory health insurance (OKP). We are happy to provide a cost estimate in advance for self-paying patients.</span>
-          </div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggleAcc(this)">
-            <span class="de">Kann ich bei meinem Kind dabei sein?</span>
-            <span class="en">Can I accompany my child?</span>
-            <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="acc-body">
-            <span class="de">Ja. Im Open MRI können Eltern ihr Kind in den meisten Fällen während der Untersuchung begleiten. Dies ist ein grosser Vorteil gegenüber konventionellen MRT-Geräten.</span>
-            <span class="en">Yes. In the Open MRI, parents can in most cases accompany their child during the examination. This is a major advantage over conventional MRI scanners.</span>
-          </div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggleAcc(this)">
-            <span class="de">Wann erhalte ich den Befundbericht?</span>
-            <span class="en">When will I receive the report?</span>
-            <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="acc-body">
-            <span class="de">Ihr Befund wird von einem unserer Fachärzte FMH erstellt und in der Regel innerhalb von 24–48 Stunden übermittelt. Bei Eilfällen ist ein Express-Befund am selben Tag möglich.</span>
-            <span class="en">Your report is written by one of our FMH specialists and typically delivered within 24–48 hours. For urgent cases, a same-day express report is possible.</span>
-          </div>
         </div>
       </div>
     </div>

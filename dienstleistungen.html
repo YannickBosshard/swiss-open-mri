@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de" data-lang="de">
 <head>
 <meta charset="UTF-8">
@@ -25,14 +25,14 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
 .nav.scrolled{box-shadow:0 2px 20px rgba(15,29,88,0.09)}
 .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}.nav-logo-img img{height:52px;width:auto;display:block}
 .nav-logo-text span{display:block;font-size:.95rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links{display:flex;align-items:center;gap:28px;margin-left:32px}
 .nav-links>a{color:var(--text-s);text-decoration:none;font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}.nav-links>a:hover{color:var(--navy)}
 .nav-right{display:flex;align-items:center;gap:16px}
 .lang-toggle{display:flex;align-items:center;gap:2px;background:var(--cream);border:1px solid var(--border);border-radius:100px;padding:3px}
 .lang-btn{background:none;border:none;color:var(--text-m);font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:4px 10px;border-radius:100px;cursor:pointer;font-family:inherit;transition:.2s}.lang-btn.active{background:var(--navy);color:var(--white)}
 .nav-book{background:var(--gold);color:var(--navy);padding:9px 20px;border-radius:100px;font-size:.8rem;font-weight:600;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:.3s var(--ease)}.nav-book:hover{background:var(--gold-light)}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--navy);margin:5px 0}
-.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop{position:relative;display:flex;align-items:center}.nav-drop::after{content:"";position:absolute;top:100%;left:0;right:0;height:20px}
 .nav-drop-toggle{display:flex;align-items:center;gap:5px;color:var(--text-s);font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0;text-decoration:none}
 .nav-drop:hover .nav-drop-toggle,.nav-drop.open .nav-drop-toggle{color:var(--navy)}
 .nav-drop-toggle svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform .2s;flex-shrink:0}
@@ -59,6 +59,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
 
 .svc-card-top{background:var(--navy-dark);padding:40px 36px 36px;position:relative;overflow:hidden}
 .svc-card-top-bg{position:absolute;inset:0;pointer-events:none}
+.svc-card-top-bg img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.48}
 .svc-icon{width:60px;height:60px;border-radius:14px;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
 .svc-icon svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .svc-card-top h2{color:var(--white);font-size:1.5rem;font-weight:300;margin-bottom:6px}
@@ -138,18 +139,19 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         </div>
       </div>
       <div class="nav-drop">
-        <button class="nav-drop-toggle"><span class="de">Fachbereiche</span><span class="en">Specialties</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <a href="fachbereiche.html" class="nav-drop-toggle"><span class="de">Fachbereiche</span><span class="en">Specialties</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a>
         <div class="drop-menu">
           <a href="muskuloskelettale-radiologie.html">Muskuloskelettale Radiologie</a>
           <a href="neuroradiologie.html">Neuroradiologie</a>
           <a href="abdominelle-radiologie.html">Abdominelle Radiologie</a>
           <a href="thorakale-radiologie.html">Thorakale Radiologie</a>
           <a href="gefaessdiagnostik.html">Gefässdiagnostik</a>
+          <a href="schmerztherapie.html">Schmerztherapie</a>
+          <a href="mamma-mrt.html">Mamma-MRT</a>
         </div>
       </div>
       <a href="index.html#patienten"><span class="de">Patienten</span><span class="en">Patients</span></a>
       <a href="index.html#zuweiser"><span class="de">Zuweiser</span><span class="en">Referrers</span></a>
-      <a href="index.html#faq">FAQ</a>
       <a href="index.html#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a>
     </div>
     <div class="nav-right">
@@ -195,10 +197,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
       <div class="svc-card fade-up">
         <div class="svc-card-top">
           <div class="svc-card-top-bg">
-            <svg width="100%" height="100%" viewBox="0 0 480 220" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="400" cy="110" r="130" fill="none" stroke="rgba(200,169,110,0.07)" stroke-width="1.5"/>
-              <circle cx="400" cy="110" r="80" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="2"/>
-            </svg>
+            <img src="bilder/dienstleistungen/MRT_Magnetresonaztomographie.png" alt="MRT" loading="lazy">
           </div>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"/><path d="M9 12h6M12 9v6"/></svg>
@@ -238,10 +237,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
       <div class="svc-card fade-up d1">
         <div class="svc-card-top">
           <div class="svc-card-top-bg">
-            <svg width="100%" height="100%" viewBox="0 0 480 220" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="400" cy="110" r="130" fill="none" stroke="rgba(200,169,110,0.07)" stroke-width="1.5"/>
-              <circle cx="400" cy="110" r="80" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="2"/>
-            </svg>
+            <img src="bilder/dienstleistungen/CT_Computertomographie.jpg" alt="CT" loading="lazy">
           </div>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="3" y1="12" x2="7" y2="12"/><line x1="17" y1="12" x2="21" y2="12"/></svg>
@@ -281,10 +277,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
       <div class="svc-card fade-up d2">
         <div class="svc-card-top">
           <div class="svc-card-top-bg">
-            <svg width="100%" height="100%" viewBox="0 0 480 220" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="400" cy="110" r="130" fill="none" stroke="rgba(200,169,110,0.07)" stroke-width="1.5"/>
-              <circle cx="400" cy="110" r="80" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="2"/>
-            </svg>
+            <img src="bilder/dienstleistungen/Ultraschall_Sonographie.jpg" alt="Ultraschall" loading="lazy">
           </div>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -324,10 +317,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
       <div class="svc-card fade-up d3">
         <div class="svc-card-top">
           <div class="svc-card-top-bg">
-            <svg width="100%" height="100%" viewBox="0 0 480 220" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="400" cy="110" r="130" fill="none" stroke="rgba(200,169,110,0.07)" stroke-width="1.5"/>
-              <circle cx="400" cy="110" r="80" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="2"/>
-            </svg>
+            <img src="bilder/dienstleistungen/Durchleuchtung.png" alt="Durchleuchtung" loading="lazy">
           </div>
           <div class="svc-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
@@ -387,7 +377,11 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         <a href="neuroradiologie.html">Neuroradiologie</a>
         <a href="abdominelle-radiologie.html" class="de">Abdominelle Radiologie</a><a href="abdominelle-radiologie.html" class="en">Abdominal Radiology</a>
         <a href="thorakale-radiologie.html" class="de">Thorakale Radiologie</a><a href="thorakale-radiologie.html" class="en">Thoracic Radiology</a>
-        <a href="gefaessdiagnostik.html" class="de">Gefässdiagnostik</a><a href="gefaessdiagnostik.html" class="en">Vascular Imaging</a>
+        <a href="gefaessdiagnostik.html" class="de">Gefässdiagnostik</a>
+          <a href="schmerztherapie.html">Schmerztherapie</a>
+          <a href="gefaessdiagnostik.html" class="en">Vascular Imaging</a>
+        <a href="schmerztherapie.html">Schmerztherapie</a>
+        <a href="mamma-mrt.html">Mamma-MRT</a>
       </div>
       <div class="f-col">
         <h4 class="de">Kontakt</h4><h4 class="en">Contact</h4>

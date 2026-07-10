@@ -28,14 +28,14 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
 .nav.scrolled{box-shadow:0 2px 20px rgba(15,29,88,0.09)}
 .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}.nav-logo-img img{height:52px;width:auto;display:block}
 .nav-logo-text span{display:block;font-size:.95rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links{display:flex;align-items:center;gap:28px;margin-left:32px}
 .nav-links>a{color:var(--text-s);text-decoration:none;font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}.nav-links>a:hover{color:var(--navy)}
 .nav-right{display:flex;align-items:center;gap:16px}
 .lang-toggle{display:flex;align-items:center;gap:2px;background:var(--cream);border:1px solid var(--border);border-radius:100px;padding:3px}
 .lang-btn{background:none;border:none;color:var(--text-m);font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:4px 10px;border-radius:100px;cursor:pointer;font-family:inherit;transition:.2s}.lang-btn.active{background:var(--navy);color:var(--white)}
 .nav-book{background:var(--gold);color:var(--navy);padding:9px 20px;border-radius:100px;font-size:.8rem;font-weight:600;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:.3s var(--ease)}.nav-book:hover{background:var(--gold-light)}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--navy);margin:5px 0}
-.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop{position:relative;display:flex;align-items:center}.nav-drop::after{content:"";position:absolute;top:100%;left:0;right:0;height:20px}
 .nav-drop-toggle{display:flex;align-items:center;gap:5px;color:var(--text-s);font-size:.8125rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0}
 .nav-drop:hover .nav-drop-toggle{color:var(--navy)}.nav-drop-toggle svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform .2s;flex-shrink:0}
 .nav-drop:hover .nav-drop-toggle svg{transform:rotate(180deg)}
@@ -119,18 +119,19 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         </div>
       </div>
       <div class="nav-drop">
-        <button class="nav-drop-toggle"><span class="de">Fachbereiche</span><span class="en">Specialties</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <a href="fachbereiche.html" class="nav-drop-toggle"><span class="de">Fachbereiche</span><span class="en">Specialties</span><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a>
         <div class="drop-menu">
           <a href="muskuloskelettale-radiologie.html">Muskuloskelettale Radiologie</a>
           <a href="neuroradiologie.html">Neuroradiologie</a>
           <a href="abdominelle-radiologie.html" class="active">Abdominelle Radiologie</a>
           <a href="thorakale-radiologie.html">Thorakale Radiologie</a>
           <a href="gefaessdiagnostik.html">Gefässdiagnostik</a>
+          <a href="schmerztherapie.html">Schmerztherapie</a>
+          <a href="mamma-mrt.html">Mamma-MRT</a>
         </div>
       </div>
       <a href="index.html#patienten"><span class="de">Patienten</span><span class="en">Patients</span></a>
       <a href="index.html#zuweiser"><span class="de">Zuweiser</span><span class="en">Referrers</span></a>
-      <a href="index.html#faq">FAQ</a>
       <a href="index.html#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a>
     </div>
     <div class="nav-right">
@@ -147,6 +148,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
 
 <section class="page-hero">
   <div class="page-hero-rings">
+  <img src="bilder/fachbereiche/Abdominelle%20Radiologie.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:0.48;pointer-events:none">
     <svg width="100%" height="100%" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <circle cx="1000" cy="250" r="220" fill="none" stroke="rgba(200,169,110,0.06)" stroke-width="1"/>
       <circle cx="1000" cy="250" r="160" fill="none" stroke="rgba(200,169,110,0.09)" stroke-width="1.5"/>
@@ -170,6 +172,7 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
       <a href="index.html#kontakt" class="btn btn-outline-w">
         <span class="de">Fragen? Kontakt aufnehmen</span><span class="en">Questions? Get in touch</span>
       </a>
+    </div>
     </div>
   </div>
 </section>
@@ -210,6 +213,8 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         </div>
       </div>
     </div>
+    </div>
+
   </div>
 </section>
 
@@ -260,6 +265,8 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         <p class="en" style="font-size:.8125rem;margin:0;line-height:1.6">Prostate MRI (PI-RADS), rectal cancer staging, gynaecological tumours, lymph node staging</p>
       </div>
     </div>
+    </div>
+
   </div>
 </section>
 
@@ -305,6 +312,8 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         </div></div>
       </div>
     </div>
+    </div>
+
   </div>
 </section>
 
@@ -346,7 +355,11 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         <a href="neuroradiologie.html">Neuroradiologie</a>
         <a href="abdominelle-radiologie.html" class="de">Abdominelle Radiologie</a><a href="abdominelle-radiologie.html" class="en">Abdominal Radiology</a>
         <a href="thorakale-radiologie.html" class="de">Thorakale Radiologie</a><a href="thorakale-radiologie.html" class="en">Thoracic Radiology</a>
-        <a href="gefaessdiagnostik.html" class="de">Gefässdiagnostik</a><a href="gefaessdiagnostik.html" class="en">Vascular Imaging</a>
+        <a href="gefaessdiagnostik.html" class="de">Gefässdiagnostik</a>
+          <a href="schmerztherapie.html">Schmerztherapie</a>
+          <a href="gefaessdiagnostik.html" class="en">Vascular Imaging</a>
+        <a href="schmerztherapie.html">Schmerztherapie</a>
+        <a href="mamma-mrt.html">Mamma-MRT</a>
       </div>
       <div class="f-col">
         <h4 class="de">Kontakt</h4><h4 class="en">Contact</h4>
