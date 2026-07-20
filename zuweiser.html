@@ -393,7 +393,34 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
           </div>
         </div>
 
-        <!-- BLOCK 5: Kostenträger & Termin -->
+        <!-- BLOCK 5: Dokumente & Datenschutz -->
+        <div class="form-block fade-up">
+          <div class="form-block-title de">Dokumente & Abschluss</div>
+          <div class="form-block-title en">Documents & Submission</div>
+
+          <div class="form-group" style="margin-bottom:24px">
+            <label class="de">Datei hinzufügen (z.B. Vorbefund, Laborwerte)</label>
+            <label class="en">Attach file (e.g. previous findings, lab results)</label>
+            <p style="font-size:.75rem;color:var(--text-m);margin:4px 0 8px" class="de">Akzeptierte Formate: pdf, zip, docx, odf, jpg, png</p>
+            <p style="font-size:.75rem;color:var(--text-m);margin:4px 0 8px" class="en">Accepted formats: pdf, zip, docx, odf, jpg, png</p>
+            <input type="file" name="datei" accept=".pdf,.zip,.docx,.odf,.jpg,.jpeg,.png">
+          </div>
+
+          <div class="check-group" style="gap:12px">
+            <label class="check-item" style="align-items:flex-start;gap:10px">
+              <input type="checkbox" name="kopie_email" checked style="margin-top:3px">
+              <span style="font-size:.85rem;color:var(--text-s)" class="de">Kopie dieser Anmeldung an meine E-Mail-Adresse senden</span>
+              <span style="font-size:.85rem;color:var(--text-s)" class="en">Send copy of this registration to my email address</span>
+            </label>
+            <label class="check-item" style="align-items:flex-start;gap:10px">
+              <input type="checkbox" name="datenschutz" required style="margin-top:3px">
+              <span style="font-size:.85rem;color:var(--text-s)" class="de">Ich stimme zu, dass meine Angaben zur Bearbeitung dieser Anfrage erhoben und verarbeitet werden. <a href="#" style="color:var(--navy)">Datenschutzerklärung</a></span>
+              <span style="font-size:.85rem;color:var(--text-s)" class="en">I agree that my data will be collected and processed for handling this request. <a href="#" style="color:var(--navy)">Privacy policy</a></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- BLOCK 6: Kostenträger & Termin -->
         <div class="form-block fade-up">
           <div class="form-block-title de">Kostenträger & Terminwunsch</div>
           <div class="form-block-title en">Insurance & Appointment</div>
@@ -440,33 +467,6 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
               <label class="en">Patient should be seen by</label>
               <input type="date" name="termin_bis">
             </div>
-          </div>
-        </div>
-
-        <!-- BLOCK 6: Dokumente & Datenschutz -->
-        <div class="form-block fade-up">
-          <div class="form-block-title de">Dokumente & Abschluss</div>
-          <div class="form-block-title en">Documents & Submission</div>
-
-          <div class="form-group" style="margin-bottom:24px">
-            <label class="de">Datei hinzufügen (z.B. Vorbefund, Laborwerte)</label>
-            <label class="en">Attach file (e.g. previous findings, lab results)</label>
-            <p style="font-size:.75rem;color:var(--text-m);margin:4px 0 8px" class="de">Akzeptierte Formate: pdf, zip, docx, odf, jpg, png</p>
-            <p style="font-size:.75rem;color:var(--text-m);margin:4px 0 8px" class="en">Accepted formats: pdf, zip, docx, odf, jpg, png</p>
-            <input type="file" name="datei" accept=".pdf,.zip,.docx,.odf,.jpg,.jpeg,.png">
-          </div>
-
-          <div class="check-group" style="gap:12px">
-            <label class="check-item" style="align-items:flex-start;gap:10px">
-              <input type="checkbox" name="kopie_email" checked style="margin-top:3px">
-              <span style="font-size:.85rem;color:var(--text-s)" class="de">Kopie dieser Anmeldung an meine E-Mail-Adresse senden</span>
-              <span style="font-size:.85rem;color:var(--text-s)" class="en">Send copy of this registration to my email address</span>
-            </label>
-            <label class="check-item" style="align-items:flex-start;gap:10px">
-              <input type="checkbox" name="datenschutz" required style="margin-top:3px">
-              <span style="font-size:.85rem;color:var(--text-s)" class="de">Ich stimme zu, dass meine Angaben zur Bearbeitung dieser Anfrage erhoben und verarbeitet werden. <a href="#" style="color:var(--navy)">Datenschutzerklärung</a></span>
-              <span style="font-size:.85rem;color:var(--text-s)" class="en">I agree that my data will be collected and processed for handling this request. <a href="#" style="color:var(--navy)">Privacy policy</a></span>
-            </label>
           </div>
         </div>
 
