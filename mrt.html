@@ -519,21 +519,30 @@ document.addEventListener('click',e=>{if(!e.target.closest('.nav-inner'))documen
 document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open')}));
 </script>
 
-<!-- COMING SOON BANNER -->
-<div id="cs-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:9999;transform:translateY(100%);transition:transform .45s cubic-bezier(.16,1,.3,1)">
-  <div style="background:#090E35;border-top:1.5px solid rgba(200,169,110,0.45);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
-    <div style="display:flex;align-items:center;gap:14px;flex:1">
-      <div style="width:36px;height:36px;border-radius:50%;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.9)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      </div>
-      <div>
-        <p style="margin:0;font-size:.8rem;font-weight:600;color:rgba(200,169,110,0.95);letter-spacing:.04em;font-family:Montserrat,sans-serif">ERÖFFNUNG ANFANG 2028</p>
-        <p style="margin:2px 0 0;font-size:.75rem;color:rgba(255,255,255,0.55);font-family:Montserrat,sans-serif">Die Radiologie Swiss Open MRI Schwyz befindet sich derzeit im Aufbau. Wir freuen uns, Sie ab Anfang 2028 zu empfangen.</p>
-      </div>
+<!-- COMING SOON MODAL -->
+<div id="cs-overlay" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(9,14,53,0.72);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.16,1,.3,1)">
+  <div style="background:#090E35;border:1px solid rgba(200,169,110,0.25);border-radius:20px;max-width:480px;width:100%;padding:48px 40px 40px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.5);text-align:center">
+    <!-- Close -->
+    <button onclick="closeCsBanner()" style="position:absolute;top:16px;right:16px;background:none;border:1px solid rgba(200,169,110,0.2);color:rgba(200,169,110,0.6);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:.2s" onmouseover="this.style.borderColor='rgba(200,169,110,0.5)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.2)'">&#x2715;</button>
+    <!-- Icon ring -->
+    <div style="width:72px;height:72px;border-radius:50%;border:1px solid rgba(200,169,110,0.3);background:rgba(200,169,110,0.07);display:flex;align-items:center;justify-content:center;margin:0 auto 28px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.9)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
     </div>
-    <button onclick="document.getElementById('cs-banner').style.transform='translateY(100%)';sessionStorage.setItem('cs_closed','1')" style="background:none;border:1px solid rgba(200,169,110,0.3);color:rgba(200,169,110,0.7);width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px" title="Schliessen">&#x2715;</button>
+    <!-- Label -->
+    <p style="font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,169,110,0.7);margin-bottom:12px;font-family:Montserrat,sans-serif">Swiss Open MRI · Schwyz</p>
+    <!-- Heading -->
+    <h2 style="font-size:1.65rem;font-weight:300;color:#ffffff;letter-spacing:-.01em;line-height:1.25;margin-bottom:16px;font-family:Montserrat,sans-serif">Eröffnung<br><em style="font-style:normal;color:rgba(200,169,110,0.95)">Anfang 2028</em></h2>
+    <!-- Divider -->
+    <div style="width:40px;height:1px;background:rgba(200,169,110,0.35);margin:0 auto 20px"></div>
+    <!-- Text -->
+    <p style="font-size:.875rem;color:rgba(255,255,255,0.45);line-height:1.75;margin-bottom:32px;font-family:Montserrat,sans-serif">Unsere Radiologiepraxis befindet sich derzeit im Aufbau. Wir freuen uns, Sie ab Anfang 2028 in modernen Räumlichkeiten im Kanton Schwyz empfangen zu dürfen.</p>
+    <!-- Button -->
+    <button onclick="closeCsBanner()" style="background:rgba(200,169,110,1);color:#090E35;border:none;padding:13px 36px;border-radius:100px;font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:Montserrat,sans-serif;transition:.2s;width:100%" onmouseover="this.style.background='rgba(223,194,142,1)'" onmouseout="this.style.background='rgba(200,169,110,1)'">Verstanden</button>
   </div>
 </div>
-<script>if(!sessionStorage.getItem("cs_closed")){setTimeout(function(){var b=document.getElementById("cs-banner");if(b)b.style.transform="translateY(0)"},600)}</script>
+<script>
+function closeCsBanner(){var o=document.getElementById("cs-overlay");o.style.opacity="0";o.style.pointerEvents="none";sessionStorage.setItem("cs_closed","1")}
+if(!sessionStorage.getItem("cs_closed")){setTimeout(function(){var o=document.getElementById("cs-overlay");if(o){o.style.opacity="1";o.style.pointerEvents="auto"}},700)}
+</script>
 </body>
 </html>
