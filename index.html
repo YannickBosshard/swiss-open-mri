@@ -512,30 +512,48 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         <svg width="100%" viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1">
           <defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0L0 0 0 20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/></pattern></defs>
           <rect width="340" height="280" fill="url(#g)"/>
-          <!-- Ring system representing Open MRI -->
-          <circle cx="170" cy="140" r="110" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="1"/>
-          <circle cx="170" cy="140" r="88" fill="none" stroke="rgba(200,169,110,0.16)" stroke-width="1.5"/>
-          <circle cx="170" cy="140" r="66" fill="rgba(255,255,255,0.02)" stroke="rgba(200,169,110,0.28)" stroke-width="2"/>
-          <!-- Inner bore -->
-          <ellipse cx="170" cy="140" rx="44" ry="32" fill="rgba(9,14,53,0.7)" stroke="rgba(200,169,110,0.45)" stroke-width="1.5"/>
-          <!-- Scan lines inside -->
-          <line x1="130" y1="133" x2="210" y2="133" stroke="rgba(200,169,110,0.14)" stroke-width="1"/>
-          <line x1="130" y1="140" x2="210" y2="140" stroke="rgba(200,169,110,0.25)" stroke-width="1.5"/>
-          <line x1="130" y1="147" x2="210" y2="147" stroke="rgba(200,169,110,0.14)" stroke-width="1"/>
-          <!-- Swiss cross center -->
-          <rect x="164" y="133" width="12" height="14" rx="1" fill="rgba(200,169,110,0.4)"/>
-          <rect x="161" y="136" width="18" height="8" rx="1" fill="rgba(200,169,110,0.4)"/>
+          <!-- Open MRI front view (C-shape / two-plate design) -->
+          <!-- Top magnet plate -->
+          <rect x="28" y="22" width="210" height="88" rx="10" fill="rgba(15,29,88,0.85)" stroke="rgba(200,169,110,0.35)" stroke-width="1.5"/>
+          <rect x="42" y="34" width="182" height="64" rx="6" fill="rgba(9,14,53,0.6)" stroke="rgba(200,169,110,0.15)" stroke-width="1"/>
+          <!-- Surface detail lines top plate -->
+          <line x1="42" y1="60" x2="224" y2="60" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
+          <line x1="42" y1="70" x2="224" y2="70" stroke="rgba(200,169,110,0.08)" stroke-width="0.75"/>
+          <!-- Bottom magnet plate -->
+          <rect x="28" y="170" width="210" height="88" rx="10" fill="rgba(15,29,88,0.85)" stroke="rgba(200,169,110,0.35)" stroke-width="1.5"/>
+          <rect x="42" y="182" width="182" height="64" rx="6" fill="rgba(9,14,53,0.6)" stroke="rgba(200,169,110,0.15)" stroke-width="1"/>
+          <!-- Surface detail lines bottom plate -->
+          <line x1="42" y1="196" x2="224" y2="196" stroke="rgba(200,169,110,0.08)" stroke-width="0.75"/>
+          <line x1="42" y1="206" x2="224" y2="206" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
+          <!-- Patient opening / gap area (110px = 440mm) -->
+          <rect x="28" y="110" width="210" height="60" fill="rgba(200,169,110,0.03)" stroke="none"/>
+          <!-- Magnetic field lines in gap -->
+          <path d="M 60 110 Q 133 130 60 170" fill="none" stroke="rgba(200,169,110,0.08)" stroke-width="1"/>
+          <path d="M 90 110 Q 133 135 90 170" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="1"/>
+          <path d="M 133 110 L 133 170" stroke="rgba(200,169,110,0.13)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <path d="M 176 110 Q 133 135 176 170" fill="none" stroke="rgba(200,169,110,0.1)" stroke-width="1"/>
+          <path d="M 206 110 Q 133 130 206 170" fill="none" stroke="rgba(200,169,110,0.08)" stroke-width="1"/>
+          <!-- Patient table extending right -->
+          <rect x="238" y="152" width="82" height="16" rx="4" fill="rgba(200,169,110,0.2)" stroke="rgba(200,169,110,0.4)" stroke-width="1"/>
+          <rect x="238" y="168" width="82" height="4" rx="2" fill="rgba(200,169,110,0.1)"/>
+          <!-- Table support pillar -->
+          <rect x="290" y="172" width="12" height="22" rx="2" fill="rgba(200,169,110,0.15)" stroke="rgba(200,169,110,0.25)" stroke-width="1"/>
+          <!-- Gap dimension arrow -->
+          <line x1="22" y1="110" x2="22" y2="170" stroke="rgba(200,169,110,0.45)" stroke-width="1"/>
+          <line x1="17" y1="110" x2="27" y2="110" stroke="rgba(200,169,110,0.45)" stroke-width="1"/>
+          <line x1="17" y1="170" x2="27" y2="170" stroke="rgba(200,169,110,0.45)" stroke-width="1"/>
           <!-- Annotation callouts -->
-          <circle cx="280" cy="78" r="2" fill="rgba(200,169,110,0.7)"/>
-          <line x1="238" y1="100" x2="277" y2="80" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
-          <text x="285" y="76" font-size="8.5" fill="rgba(200,169,110,0.65)" font-family="Montserrat,sans-serif">3.0 Tesla</text>
-          <circle cx="280" cy="140" r="2" fill="rgba(200,169,110,0.7)"/>
-          <line x1="218" y1="140" x2="277" y2="140" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
-          <text x="285" y="138" font-size="8.5" fill="rgba(200,169,110,0.65)" font-family="Montserrat,sans-serif">Wide Bore 70cm</text>
-          <circle cx="280" cy="200" r="2" fill="rgba(200,169,110,0.7)"/>
-          <line x1="237" y1="178" x2="277" y2="198" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
-          <text x="285" y="198" font-size="8.5" fill="rgba(200,169,110,0.65)" font-family="Montserrat,sans-serif">Supraleitend</text>
-          <text x="170" y="262" font-size="7.5" fill="rgba(255,255,255,0.2)" text-anchor="middle" font-family="Montserrat,sans-serif" letter-spacing="2">OPEN MRI · SWISS OPEN MRI · SCHWYZ</text>
+          <circle cx="282" cy="58" r="2" fill="rgba(200,169,110,0.7)"/>
+          <line x1="238" y1="58" x2="279" y2="58" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
+          <text x="286" y="55" font-size="8.5" fill="rgba(200,169,110,0.75)" font-family="Montserrat,sans-serif">1.2 Tesla</text>
+          <circle cx="282" cy="140" r="2" fill="rgba(200,169,110,0.7)"/>
+          <line x1="238" y1="140" x2="279" y2="140" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
+          <text x="286" y="137" font-size="8.5" fill="rgba(200,169,110,0.75)" font-family="Montserrat,sans-serif">440 mm</text>
+          <text x="286" y="148" font-size="7" fill="rgba(200,169,110,0.5)" font-family="Montserrat,sans-serif">Öffnung</text>
+          <circle cx="282" cy="215" r="2" fill="rgba(200,169,110,0.7)"/>
+          <line x1="238" y1="215" x2="279" y2="215" stroke="rgba(200,169,110,0.3)" stroke-width="0.75"/>
+          <text x="286" y="212" font-size="8.5" fill="rgba(200,169,110,0.75)" font-family="Montserrat,sans-serif">Max. 300 kg</text>
+          <text x="133" y="268" font-size="7.5" fill="rgba(255,255,255,0.2)" text-anchor="middle" font-family="Montserrat,sans-serif" letter-spacing="2">OPEN MRI · SWISS OPEN MRI · SCHWYZ</text>
         </svg>
       </div>
       <div class="fade-up d1">
@@ -543,25 +561,25 @@ p{font-size:1rem;line-height:1.75;color:var(--text-s)}
         <span class="label en">Open MRI Technology</span>
         <h2 style="margin:12px 0 16px" class="de">Offenes MRT der neuesten Generation</h2>
         <h2 style="margin:12px 0 16px" class="en">Next-generation open MRI</h2>
-        <p class="de" style="margin-bottom:36px">Unser Wide-Bore Open MRI System kombiniert die diagnostische Präzision eines Hochfeld-MRTs mit dem Komfort eines offenen Untersuchungsraums — ein Paradigmenwechsel in der Radiologie.</p>
-        <p class="en" style="margin-bottom:36px">Our Wide-Bore Open MRI system combines the diagnostic precision of high-field MRI with the comfort of an open examination space — a paradigm shift in radiology.</p>
+        <p class="de" style="margin-bottom:36px">Unser offenes MRT-System mit 440 mm breiter Öffnung und vollständig geöffneter Bauweise kombiniert diagnostische Präzision mit maximalem Patientenkomfort — ohne Tunnelgefühl.</p>
+        <p class="en" style="margin-bottom:36px">Our open MRI system with a 440 mm wide opening and fully open design combines diagnostic precision with maximum patient comfort — no tunnel feeling.</p>
         <div class="tech-features">
           <div class="tech-f">
             <div class="tech-f-num">01</div>
             <div>
-              <h4 class="de">Weite Öffnung — kein Tunnelgefühl</h4>
-              <h4 class="en">Wide opening — no tunnel feeling</h4>
-              <p class="de" style="font-size:.875rem;margin:0">Der grosszügige 70cm Durchmesser gibt Ihnen deutlich mehr Raum und minimiert das Engegefühl entscheidend gegenüber konventionellen Geräten.</p>
-              <p class="en" style="font-size:.875rem;margin:0">The generous 70cm diameter gives you significantly more space and decisively minimizes the feeling of constriction compared to conventional scanners.</p>
+              <h4 class="de">440 mm Öffnung — kein Tunnelgefühl</h4>
+              <h4 class="en">440 mm opening — no tunnel feeling</h4>
+              <p class="de" style="font-size:.875rem;margin:0">Die grosszügige 440 mm Öffnung zwischen den Magnetplatten ermöglicht eine vollständig offene Untersuchung — ideal für Menschen mit Platzangst, Kinder und ältere Patienten.</p>
+              <p class="en" style="font-size:.875rem;margin:0">The generous 440 mm opening between the magnet plates enables a fully open examination — ideal for people with claustrophobia, children, and elderly patients.</p>
             </div>
           </div>
           <div class="tech-f">
             <div class="tech-f-num">02</div>
             <div>
-              <h4 class="de">3-Tesla Hochfeld-Bildgebung</h4>
-              <h4 class="en">3-Tesla high-field imaging</h4>
-              <p class="de" style="font-size:.875rem;margin:0">Höchste Bildauflösung und diagnostische Präzision durch modernste Hochfeld-MRT-Technologie — vergleichbar mit den führenden Universitätskliniken.</p>
-              <p class="en" style="font-size:.875rem;margin:0">Highest image resolution and diagnostic precision through state-of-the-art high-field MRI technology — comparable to leading university clinics.</p>
+              <h4 class="de">1.2-Tesla Bildgebung</h4>
+              <h4 class="en">1.2-Tesla imaging</h4>
+              <p class="de" style="font-size:.875rem;margin:0">Hohe Bildqualität bei gleichzeitig offener Bauweise — das System liefert zuverlässige diagnostische Ergebnisse bei deutlich höherem Komfort als geschlossene Systeme.</p>
+              <p class="en" style="font-size:.875rem;margin:0">High image quality combined with an open design — the system delivers reliable diagnostic results with significantly greater comfort than closed systems.</p>
             </div>
           </div>
           <div class="tech-f">
